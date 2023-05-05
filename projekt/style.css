@@ -1,3 +1,10 @@
+:root {
+    --theme-text-color: whitesmoke;
+    --theme-text-hover-color: rgb(135, 172, 228);
+    --theme-text-background-color: #20294d;
+    --border-radius: 18px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,12 +12,15 @@
 }
 
 body {
+    background-color: #16193B;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--theme-text-color);
 }
 
 .flex-box {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 header {
@@ -19,15 +29,20 @@ header {
     align-items: center;
     justify-content: space-between;
 
-    margin-bottom: 150px;
+    margin: 0px 25px;
+    margin-bottom: 20px;
     padding: 40px 10px;
 
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--theme-text-color);
 }
 
 .header-title {
     display: flex;
     flex-direction: row;
+
+    padding: 15px 20px;
+    background-color: var(--theme-text-background-color);
+    border-radius: var(--border-radius);
 }
 
 .header-title h1 {
@@ -36,44 +51,67 @@ header {
 
 .header-nav {
     display: flex;
+    background-color: var(--theme-text-background-color);
+    border-radius: var(--border-radius);
 }
 
 .header-nav li {
-    margin: 5px 10px;
+    margin: 5px 25px;
     list-style-type: none;
     font-size: large;
 
     transition: all 0.5s ease;
+    padding: 15px 20px;
 }
 
 .header-nav li:hover {
     transform: translateY(-3px);
-    color: lime;
 }
 
 .header-nav a {
     text-decoration: none;
-    color: black;
+    color: var(--theme-text-color);
     transition: all 0.3s ease;
 }
 
 .header-nav a:hover {
     text-decoration: none;
-    color: lime;
+    color: var(--theme-text-hover-color);
 }
 
 #selected {
     font-weight: bold;
 }
 
+.about-website {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
+    margin: 40px 150px;
+    margin-bottom: 50px;
+
+    border: 1px solid transparent;
+    border-radius: var(--border-radius);
+    background-color: var(--theme-text-background-color);
+}
+
+.about-website .info {
+    font-size: 18px;
+    margin-bottom: 50px;
+    padding: 45px;
+}
 
 
 footer {
-    bottom: 0;
+    border-top: 1px solid var(--theme-text-color);
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-around;
+    padding: 25px;
+    margin: 0px 25px;
+    
 }
 
 @keyframes page-loader {
