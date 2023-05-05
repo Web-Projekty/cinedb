@@ -1,0 +1,1 @@
+složka pro spojení HTML, CSS + PHP, MySQL
