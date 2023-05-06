@@ -37,7 +37,6 @@ header {
     padding: 40px 10px;
 
     border-bottom: 1px solid var(--theme-text-color);
-
 }
 
 .header-title {
@@ -122,6 +121,8 @@ footer {
     justify-content: space-around;
     padding: 25px;
     margin: 0px 25px;
+
+    animation: slide-up 1s ease forwards;
     
 }
 
