@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2023 at 05:44 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: May 06, 2023 at 07:14 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,6 +35,13 @@ CREATE TABLE `autori` (
   `prijmeni` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_czech_ci;
 
+--
+-- Dumping data for table `autori`
+--
+
+INSERT INTO `autori` (`idA`, `jmeno`, `prijmeni`) VALUES
+(1, 'Pepa', 'Necky');
+
 -- --------------------------------------------------------
 
 --
@@ -48,6 +55,13 @@ CREATE TABLE `hodnoceni` (
   `hodnota` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_czech_ci;
 
+--
+-- Dumping data for table `hodnoceni`
+--
+
+INSERT INTO `hodnoceni` (`idH`, `idS`, `uzivatel`, `hodnota`) VALUES
+(1, 1, 'Pepa', 4);
+
 -- --------------------------------------------------------
 
 --
@@ -55,11 +69,17 @@ CREATE TABLE `hodnoceni` (
 --
 
 CREATE TABLE `serialy` (
-  `idS` int(11) DEFAULT NULL,
+  `idS` int(11) NOT NULL,
   `nazev` varchar(50) NOT NULL,
-  `idA` int(11) NOT NULL,
-  `idH` int(11) NOT NULL
+  `idA` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_czech_ci;
+
+--
+-- Dumping data for table `serialy`
+--
+
+INSERT INTO `serialy` (`idS`, `nazev`, `idA`) VALUES
+(1, 'SAO', 1);
 
 --
 -- Indexes for dumped tables
@@ -75,7 +95,15 @@ ALTER TABLE `autori`
 -- Indexes for table `hodnoceni`
 --
 ALTER TABLE `hodnoceni`
-  ADD PRIMARY KEY (`idH`);
+  ADD PRIMARY KEY (`idH`),
+  ADD KEY `tv_show` (`idS`);
+
+--
+-- Indexes for table `serialy`
+--
+ALTER TABLE `serialy`
+  ADD PRIMARY KEY (`idS`),
+  ADD KEY `authors` (`idA`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -85,13 +113,35 @@ ALTER TABLE `hodnoceni`
 -- AUTO_INCREMENT for table `autori`
 --
 ALTER TABLE `autori`
-  MODIFY `idA` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `hodnoceni`
 --
 ALTER TABLE `hodnoceni`
-  MODIFY `idH` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idH` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `serialy`
+--
+ALTER TABLE `serialy`
+  MODIFY `idS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `hodnoceni`
+--
+ALTER TABLE `hodnoceni`
+  ADD CONSTRAINT `hodnoceni_ibfk_1` FOREIGN KEY (`idS`) REFERENCES `serialy` (`idS`);
+
+--
+-- Constraints for table `serialy`
+--
+ALTER TABLE `serialy`
+  ADD CONSTRAINT `serialy_ibfk_1` FOREIGN KEY (`idA`) REFERENCES `autori` (`idA`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

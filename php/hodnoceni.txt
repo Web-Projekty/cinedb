@@ -1,6 +1,5 @@
-skvělá stránka|5
-hnus|1
-skvělá stránka|5
-skvělá stránka|4
-skvělá stránka|4
-skvělá stránka|4
+jedna|1
+dva|2
+tři|3
+čtyři|4
+pět|5
