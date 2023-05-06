@@ -3,6 +3,9 @@
     --theme-text-hover-color: rgb(135, 172, 228);
     --theme-text-background-color: #20294d;
     --border-radius: 18px;
+
+    --scroll-bar: #20294d;
+    --scroll-bar-hover: #2d365b;
 }
 
 * {
@@ -34,6 +37,7 @@ header {
     padding: 40px 10px;
 
     border-bottom: 1px solid var(--theme-text-color);
+
 }
 
 .header-title {
@@ -45,6 +49,10 @@ header {
     border-radius: var(--border-radius);
 }
 
+.header-title img {
+    animation: image-load 1s ease forwards;
+}
+
 .header-title h1 {
     font-size: 25px;
 }
@@ -53,6 +61,8 @@ header {
     display: flex;
     background-color: var(--theme-text-background-color);
     border-radius: var(--border-radius);
+
+    animation: slide-down 1s ease forwards;
 }
 
 .header-nav li {
@@ -89,17 +99,18 @@ header {
     justify-content: center;
 
     margin: 40px 150px;
-    margin-bottom: 50px;
+    margin-bottom: 120px;
+    padding: 40px;
 
     border: 1px solid transparent;
     border-radius: var(--border-radius);
     background-color: var(--theme-text-background-color);
+
+    animation: slide-right 1s ease forwards;
 }
 
 .about-website .info {
     font-size: 18px;
-    margin-bottom: 50px;
-    padding: 45px;
 }
 
 
@@ -114,7 +125,67 @@ footer {
     
 }
 
-@keyframes page-loader {
+@keyframes slide-right {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-left {
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-down {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-up {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes background-animation {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 50% 60%;
+    }
+    75% {
+        background-position: 0 50%;
+    }
+}
+
+@keyframes image-load {
     0% {
         opacity: 0;
     }
@@ -126,6 +197,22 @@ footer {
     100% {
         opacity: 1;
     }
+}
+
+::-webkit-scrollbar {
+    width: .6vw;
+}
+  
+::-webkit-scrollbar-track {
+    background: var(--scroll-bar)
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--theme-text-background-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scroll-bar-hover);
 }
 
 @media (max-width: 768px) {
