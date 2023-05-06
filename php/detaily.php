@@ -63,6 +63,7 @@
             <td><a href='vypis_databaze.php'>odkaz</a>
             </tr>";
             }
+            $conn->close();
         }
         ?>
     </body>

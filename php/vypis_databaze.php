@@ -11,7 +11,8 @@
     th {
         border: 1px solid black;
     }
-    img{
+
+    img {
         width: 100px;
     }
 </style>
@@ -33,35 +34,36 @@
             <th>id Autora</th>
             <th>odkaz</th>
         </tr>
-    <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "serialy";
+        <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "serialy";
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    $sql = "SELECT idS, nazev, idA from serialy";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $idS = $row['idS'];
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $sql = "SELECT idS, nazev, idA from serialy";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $idS = $row['idS'];
 
-            echo "<tr>
-            <td><img src='img/$idS.jpg'></td>".
-            "<td>" . $row['idS'] . "</td>
+                echo "<tr>
+            <td><img src='img/$idS.jpg'></td>" .
+                    "<td>" . $row['idS'] . "</td>
             <td>" . $row['nazev'] . "</td>
-            <td>" . $row['idA']."</td>
+            <td>" . $row['idA'] . "</td>
             <td><a href='detaily.php?idS=$idS'>odkaz</a>
             </tr>";
+            }
+            $conn->close();
         }
-    }
-    ?>
+        ?>
     </table>
 </body>
 
