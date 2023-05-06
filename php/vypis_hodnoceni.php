@@ -76,8 +76,6 @@
     echo "</td>
 </tr>
 </table>";
-    echo $counter . "<br>";
-    echo $sum;
     ?>
 </body>
 
