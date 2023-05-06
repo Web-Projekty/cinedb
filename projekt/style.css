@@ -97,7 +97,7 @@ header {
     flex-direction: column;
     justify-content: center;
 
-    margin: 40px 150px;
+    margin: 40px 500px;
     margin-bottom: 120px;
     padding: 40px;
 
@@ -112,18 +112,22 @@ header {
     font-size: 18px;
 }
 
-
 footer {
+    position: fixed;
+    bottom: 0;
+    width: 97%;
+
     border-top: 1px solid var(--theme-text-color);
+    
+    margin: 0px 25px;
+}
+
+.footer-text {
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: space-around;
-    padding: 25px;
-    margin: 0px 25px;
-
     animation: slide-up 1s ease forwards;
-    
+    margin: 10px;
 }
 
 @keyframes slide-right {
