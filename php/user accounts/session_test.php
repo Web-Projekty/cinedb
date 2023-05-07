@@ -27,6 +27,7 @@ if (empty($_SESSION['user'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="pragma" content="no-cache" />
     <title>Session test</title>
 </head>
 
@@ -36,6 +37,7 @@ if (empty($_SESSION['user'])) {
     var_dump($_SESSION);
     ?>
     <a href="account_login.php"><button>login</button></a>
+    <a href="picture_upload.php"><button>picture upload</button></a>
     <form method="get" action="log_out.php">
         <button type="submit" name="log_out" value="true">log out</button>
     </form>
@@ -43,7 +45,7 @@ if (empty($_SESSION['user'])) {
     <?php
 
     if ($_SESSION['user'] == true) {
-        $uid = $_SESSION['uid'];
+        $profileId = $_SESSION['profileId'];
         echo "<table>
         <tr>
             <th>Profile pic</th>
@@ -51,13 +53,12 @@ if (empty($_SESSION['user'])) {
             <th>username</th>
         </tr>
         <tr>
-            <td><img src='pics/$uid.png'></td>
-            <td>" . $uid . "</td>
+            <td><img src='pics/$profileId.png'></td>
+            <td>" . $_SESSION['uid'] . "</td>
             <td>" . $_SESSION['username'] . "</td>
         </tr>
     </table>";
     }
-    
     ?>
 </body>
 

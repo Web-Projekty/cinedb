@@ -37,7 +37,7 @@ if(empty($_SESSION['user'])){
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql = "SELECT uid, username, password FROM users WHERE username = '$user'";
+        $sql = "SELECT uid, username, password, profileId FROM users WHERE username = '$user'";
         $result = $conn->query($sql);
         //echo $conn->info;
 
@@ -48,6 +48,7 @@ if(empty($_SESSION['user'])){
             $_SESSION['user'] = true;
             $_SESSION['username'] = $row['username'];
             $_SESSION['uid'] = $row['uid'];
+            $_SESSION['profileId'] = $row['profileId'];
         }
         $conn->close();
     }
