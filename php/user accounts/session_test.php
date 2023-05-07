@@ -1,9 +1,5 @@
-<?php
-session_start();
-if (empty($_SESSION['user'])) {
-    $_SESSION['user'] = false;
-}
-?>
+<?php include "session_start.php" ?>
+
 <!DOCTYPE html>
 <html lang="cs">
 <style>
@@ -38,6 +34,7 @@ if (empty($_SESSION['user'])) {
     ?>
     <a href="account_login.php"><button>login</button></a>
     <a href="picture_upload.php"><button>picture upload</button></a>
+    <a href="user_edit.php"><button>user_edit</button></a>
     <form method="get" action="log_out.php">
         <button type="submit" name="log_out" value="true">log out</button>
     </form>

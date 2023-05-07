@@ -32,7 +32,7 @@
             <th>id</th>
             <th>Název</th>
             <th>id Autora</th>
-            <th>odkaz</th>
+            <th>detaily</th>
         </tr>
         <?php
         $servername = "localhost";
