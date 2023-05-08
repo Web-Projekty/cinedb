@@ -5,6 +5,8 @@
     --theme-page-background-color: #608499;
     --border-radius: 18px;
 
+    --gradient-background-color: linear-gradient(45deg, var(--theme-page-background-color), var(--scroll-bar-hover));
+
     --scroll-bar: #20294d;
     --scroll-bar-hover: #2d365b;
 }
@@ -16,7 +18,7 @@
 }
 
 body {
-    background-color: var(--theme-page-background-color);
+    background: var(--gradient-background-color);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--theme-text-color);
 }
