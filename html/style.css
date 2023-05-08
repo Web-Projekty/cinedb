@@ -1,11 +1,10 @@
 :root {
+    --gradient-background-color: linear-gradient(45deg, var(--theme-page-background-color), var(--scroll-bar-hover));
     --theme-text-color: whitesmoke;
     --theme-text-hover-color: rgb(135, 172, 228);
     --theme-text-background-color: #41475e38;
     --theme-page-background-color: #608499;
     --border-radius: 18px;
-
-    --gradient-background-color: linear-gradient(45deg, var(--theme-page-background-color), var(--scroll-bar-hover));
 
     --scroll-bar: #20294d;
     --scroll-bar-hover: #2d365b;
