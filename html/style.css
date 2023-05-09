@@ -1,8 +1,8 @@
 :root {
-    --gradient-background-color: linear-gradient(45deg, var(--theme-page-background-color), var(--scroll-bar-hover));
+    --gradient-background-color: linear-gradient(60deg, var(--theme-page-background-color), var(--scroll-bar-hover), var(--theme-page-background-color), var(--scroll-bar-hover));
     --theme-text-color: whitesmoke;
     --theme-text-hover-color: rgb(135, 172, 228);
-    --theme-text-background-color: #41475e38;
+    --theme-text-background-color: #6f738538;
     --theme-page-background-color: #608499;
     --border-radius: 18px;
 
@@ -17,9 +17,10 @@
 }
 
 body {
-    background: var(--gradient-background-color);
+    background: var(--gradient-background-color) no-repeat;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--theme-text-color);
+    background-size: 500% 500%;
 }
 
 .flex-box {
@@ -120,7 +121,6 @@ header {
 /*
     FOOTER
 */
-
 footer {
     position: fixed;
     bottom: 0;
