@@ -46,35 +46,33 @@
             $target_dir = "pics/";
             $target_file = $target_dir . $filename; //basename($_FILES["file_upload"]["name"]);
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+            var_dump($imageFileType);
             if (isset($_POST["submit"])) {
                 $check = getimagesize($_FILES["file_upload"]["tmp_name"]);
                 if ($check !== false) {
-                    echo "File is an image - " . $check["mime"] . ".<br>";
+                    echo "<br>File is an image - " . $check["mime"] . ".<br>";
                     $uploadOk = 1;
                 } else {
-                    echo "File is not an image.";
+                    echo "<br>File is not an image.";
                     $uploadOk = 0;
                 }
             }
-            if (
-                $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                && $imageFileType != "gif"
-            ) {
-                echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            if ($imageFileType != "png") {
+                echo "<br>Sorry, only PNG files are allowed.";
                 $uploadOk = 0;
             }
             if ($uploadOk == 0) {
-                echo "Sorry, your file was not uploaded.";
+                echo "<br>Sorry, your file was not uploaded.";
                 // if everything is ok, try to upload file
             } else {
                 if (move_uploaded_file($_FILES["file_upload"]["tmp_name"], $target_file)) {
-                    echo "The file " . $filename . " has been uploaded.";
+                    echo "<br>The file " . $filename . " has been uploaded.";
                 } else {
-                    echo "Sorry, there was an error uploading your file.";
+                    echo "<br>Sorry, there was an error uploading your file.";
                 }
             }
         } else {
-            echo "please select a profile picture";
+            echo "<br>please select a profile picture";
         }
     } else {
         echo "please log in before changing your profile picture";
