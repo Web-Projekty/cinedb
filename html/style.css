@@ -1,5 +1,5 @@
 :root {
-    --gradient-background-color: linear-gradient(60deg, var(--theme-page-background-color), var(--scroll-bar-hover), var(--theme-page-background-color), var(--scroll-bar-hover));
+    --gradient-background-color: linear-gradient(45deg, var(--theme-page-background-color), var(--scroll-bar-hover), var(--theme-page-background-color), var(--scroll-bar-hover));
     --theme-text-color: whitesmoke;
     --theme-text-hover-color: rgb(135, 172, 228);
     --theme-text-background-color: #6f738538;
@@ -17,10 +17,12 @@
 }
 
 body {
-    background: var(--gradient-background-color) no-repeat;
+    background: var(--gradient-background-color);
+    background-size: 1000% 1000%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--theme-text-color);
-    background-size: 500% 500%;
+
+    animation: background_animation 30s infinite ease;
 }
 
 .flex-box {
@@ -61,10 +63,17 @@ header {
     font-size: 25px;
 }
 
+.header-title img {
+    width: 320px;
+}
+
 .header-nav {
     display: flex;
+    justify-content: center;
     background-color: var(--theme-text-background-color);
     border-radius: var(--border-radius);
+
+    margin: 0 200px 0 0;
 
     animation: slide-down 1s ease forwards;
 }
@@ -97,25 +106,92 @@ header {
     font-weight: bold;
 }
 
-.about-website {
+.header-login {
+    display: flex;
+    justify-content: center;
+    background-color: var(--theme-text-background-color);
+    border-radius: var(--border-radius);
+
+    animation: slide-down 1s ease forwards;
+}
+
+.header-login li {
+    margin: 5px 25px;
+    list-style-type: none;
+    font-size: large;
+
+    transition: all 0.5s ease;
+    padding: 15px 20px;
+}
+
+.header-login li:hover {
+    transform: translateY(-3px);
+}
+
+.header-login a {
+    text-decoration: none;
+    color: var(--theme-text-color);
+    transition: all 0.3s ease;
+}
+
+.header-login a:hover {
+    text-decoration: none;
+    color: var(--theme-text-hover-color);
+}
+
+/*
+    SECTIONS
+*/
+section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    margin: 40px 500px;
-    margin-bottom: 120px;
-    padding: 40px;
 
     border: 1px solid transparent;
     border-radius: var(--border-radius);
     background-color: var(--theme-text-background-color);
 
+
     animation: blend-in 3s ease forwards;
-    
+}
+
+/* Úvod */
+.about-website {
+    margin: 40px 500px;
+    margin-bottom: 120px;
+    padding: 40px;
 }
 
 .about-website .info {
     font-size: 18px;
+}
+
+/* Seriály */
+.serials-list {
+    margin: 40px 500px;
+    margin-bottom: 120px;
+    padding: 40px;
+}
+
+/* Autoři */
+.authors-list {
+    margin: 40px 500px;
+    margin-bottom: 120px;
+    padding: 40px;
+}
+
+/* Statistiky */
+.statistics {
+    margin: 40px 500px;
+    margin-bottom: 120px;
+    padding: 40px;
+}
+
+/* Hodnocení */
+.rating {
+    margin: 40px 500px;
+    margin-bottom: 120px;
+    padding: 40px;
 }
 
 /*
@@ -219,6 +295,21 @@ footer {
     }
 }
 
+@keyframes background_animation {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 50% 60%;
+    }
+    75% {
+        background-position: 0 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
+
 /* 
     SCROLL BAR 
 */
@@ -241,25 +332,9 @@ footer {
 /* 
     RESPONSIVITY 
 */
-@media (max-width: 1280px) {
-    header {
-        flex-direction: column;
-    }
-
-    .header-title {
-        margin-bottom: 25px;
-    }
-
-    .header-nav {
-        flex-wrap: wrap;
-    }
-
-    .about-website {
-        margin: 25px 0;
-    }
-}
 
 @media (max-width: 768px) {
+
     header {
         flex-direction: column;
     }
@@ -270,9 +345,52 @@ footer {
 
     .header-nav {
         flex-wrap: wrap;
+        margin: 0;
+    }
+
+    .header-login {
+        margin-top: 25px;
+    }
+
+    section {
+        width: 100%;
     }
 
     .about-website {
         margin: 25px 0;
+    }
+
+    /* Seriály */
+    .serials-list {
+        margin: 25px 0;
+    }
+
+    /* Autoři */
+    .authors-list {
+        margin: 25px 0;
+    }
+
+    /* Statistiky */
+    .statistics {
+        margin: 25px 0;
+    }
+
+    /* Hodnocení */
+    .rating {
+        margin: 25px 0;
+    }
+
+    footer {
+        position: relative;
+        margin: 0;
+        width: 90%;
+        margin-left: 20px;
+    }
+
+    .footer-text {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
     }
 }
