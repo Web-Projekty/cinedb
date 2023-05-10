@@ -32,6 +32,7 @@
             <th>id</th>
             <th>Název</th>
             <th>id Autora</th>
+            <th>hodnocení</th>
             <th>detaily</th>
         </tr>
         <?php
@@ -47,7 +48,7 @@
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-        $sql = "SELECT idS, nazev, idA from serialy";
+        $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA, AVG(hodnoceni.hodnota) as 'PHOD' from serialy left join hodnoceni on hodnoceni.idS = serialy.idS";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
@@ -58,6 +59,7 @@
                     "<td>" . $row['idS'] . "</td>
             <td>" . $row['nazev'] . "</td>
             <td>" . $row['idA'] . "</td>
+            <td>". $row['PHOD']. "</td>
             <td><a href='detaily.php?idS=$idS'>odkaz</a>
             </tr>";
             }
