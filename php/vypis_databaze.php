@@ -48,18 +48,26 @@
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-        $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA, AVG(hodnoceni.hodnota) as 'PHOD' from serialy left join hodnoceni on hodnoceni.idS = serialy.idS";
+        $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $idS = $row['idS'];
-
+                $sql = "SELECT hodnota from hodnoceni WHERE idS = '$idS'";
+                $rating_result = $conn->query($sql);
+                $counter = 0;
+                $total = 0;
+                while ($rating = $rating_result->fetch_assoc()) {
+                    $counter++;
+                    $total += $rating['hodnota'];
+                }
+                $ratingAVG = $total / $counter;
                 echo "<tr>
             <td><img src='img/$idS.jpg'></td>" .
                     "<td>" . $row['idS'] . "</td>
             <td>" . $row['nazev'] . "</td>
             <td>" . $row['idA'] . "</td>
-            <td>". $row['PHOD']. "</td>
+            <td>" . $ratingAVG . "</td>
             <td><a href='detaily.php?idS=$idS'>odkaz</a>
             </tr>";
             }

@@ -42,24 +42,36 @@ $sql = "SELECT idS, nazev, idA from serialy WHERE idS = $idS";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc(); ?>
-    <h2>Detaily k seriálu <?php echo $row['nazev'];?></h2>
+    <h2>Detaily k seriálu <?php echo $row['nazev']; ?></h2>
     <table>
         <tr>
             <th>Obrázek</th>
             <th>id</th>
             <th>Název</th>
             <th>id Autora</th>
+            <th>hodnocení</th>
             <th>zpět</th>
         </tr>
 
         <body>
         <?php
+        $sql = "SELECT hodnota from hodnoceni WHERE idS = '$idS'";
+        $rating_result = $conn->query($sql);
+        $counter = 0;
+        $total = 0;
+        while ($rating = $rating_result->fetch_assoc()) {
+            $counter++;
+            $total += $rating['hodnota'];
+        }
+        $ratingAVG = $total / $counter;
+
         if ($result->num_rows > 0) {
             echo "<tr>
             <td><img src='img/$idS.jpg'></td>" .
                 "<td>" . $row['idS'] . "</td>
             <td>" . $row['nazev'] . "</td>
             <td>" . $row['idA'] . "</td>
+            <td>" . $ratingAVG . "</td>
             <td><a href='vypis_databaze.php'>odkaz</a>
             </tr>";
         }
