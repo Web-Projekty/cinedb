@@ -19,7 +19,7 @@
     <div class="flex-box">
         <header>
             <div class="header-title">
-                <img src="../logo/logo_exp_wStroke.png" alt="logo">
+                <img src="img/logo/logo_exp_wStroke.png" alt="logo">
             </div>
 
             <nav class="header-nav">
