@@ -81,13 +81,7 @@
 
         </section>
 
-        <footer>
-            <div class="footer-text">
-                <p>2. ročníková práce</p>
-                <p>Vytvořil Ondřej Pták, Adam Vlček, Jan Rehák</p>
-                <p>12. 4. 2023<!-- Zde bude PHP (datum) --></p>
-            </div>
-        </footer>
+        <?php include "../include/footer.php"?>
     </div>
 </body>
 
