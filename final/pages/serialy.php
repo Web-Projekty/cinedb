@@ -10,6 +10,22 @@
 
     <title>Databáze seriálů - Seriály</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table td,
+        tr,
+        th {
+            border: 1px solid black;
+        }
+
+        img {
+            width: 100px;
+        }
+    </style>
 </head>
 
 <body>
@@ -35,8 +51,55 @@
         </header>
 
         <section class="serials-list">
-            <!-- <?php ?> -->
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita nostrum similique aperiam ad itaque possimus, excepturi cupiditate praesentium eum inventore maxime ipsa ullam quas quibusdam eius dolorum suscipit, ratione neque totam, amet blanditiis quidem atque repudiandae distinctio. Velit asperiores aliquid quis cum iste ducimus natus incidunt architecto iure. Harum id, consequuntur assumenda asperiores culpa delectus tempore mollitia aliquid ipsa numquam hic sint. Cumque quod blanditiis laborum dicta possimus laboriosam, iure nemo deserunt natus voluptas fugiat! Sint veniam facilis similique reprehenderit iusto iste magnam possimus neque vero, suscipit non? Magni cum obcaecati iste optio at perferendis mollitia voluptates laboriosam minus ipsum libero eaque distinctio, ex reprehenderit consectetur! Eligendi architecto consequatur blanditiis vero a possimus magnam nostrum laudantium, hic esse magni numquam! Corporis dolores porro aspernatur consequatur harum exercitationem quisquam facilis ratione numquam, dignissimos ipsum, quaerat atque, eaque impedit corrupti eligendi! Mollitia, eligendi voluptate quae quia aspernatur recusandae maxime. A, alias voluptatum quasi debitis excepturi id, omnis tempora voluptatem non minima quae necessitatibus aut. Quisquam sed quae deserunt. Ipsam necessitatibus molestiae, cupiditate odit doloribus obcaecati tempora, possimus ea corrupti vel eos, aliquam unde. Ipsam praesentium voluptates labore saepe quas ullam, doloremque, est tenetur fugiat esse ad veritatis ea architecto obcaecati eligendi sunt deserunt totam deleniti corrupti beatae repudiandae officia doloribus temporibus iste. Amet voluptatum adipisci, voluptate sed quibusdam doloremque at deleniti minima sequi aliquam vel eum inventore nobis maiores exercitationem animi officia nesciunt hic perferendis quis autem consectetur neque ipsam! Laboriosam nemo rem animi itaque ex dignissimos illum quis. Hic eveniet debitis deserunt voluptate animi perspiciatis blanditiis earum nostrum id. Veritatis delectus dolorum laborum praesentium quasi distinctio voluptates sed maxime non quas cupiditate omnis, nam reprehenderit harum saepe, ea porro possimus, pariatur totam? Delectus, odit sint magnam quos eos officia eligendi eum quod ut illo, aperiam earum asperiores sequi aliquid exercitationem? Expedita fuga quidem optio obcaecati dignissimos incidunt nam exercitationem eaque! Placeat numquam obcaecati omnis eum. Nisi nulla aliquam optio, beatae possimus nemo quasi et aperiam earum minus delectus aut nam deleniti soluta asperiores cupiditate recusandae id dolorem officia? Deserunt dolore officiis repellendus numquam, saepe asperiores itaque maxime est eum, quos ex voluptatibus. Nam eligendi, doloremque unde corporis laborum nobis iste eum veritatis architecto assumenda alias distinctio ab! Explicabo velit, minus atque veniam, id nemo ipsum tempore voluptatibus consequuntur iure aliquam, assumenda inventore a iusto placeat iste praesentium officiis ratione ullam enim obcaecati quo? Error nesciunt quae consequuntur asperiores recusandae. Sequi accusamus modi officiis, fugiat nemo tempora illum voluptates itaque, molestias quibusdam atque quo molestiae consequatur, delectus inventore? Totam ad obcaecati ex velit non voluptate temporibus fugit vero, ab maiores error quibusdam officiis, amet adipisci quas. Et alias reprehenderit, consequatur odit eos, laboriosam officia nesciunt eligendi itaque repellat repudiandae? Deserunt beatae nulla, illo adipisci laudantium doloribus soluta voluptates! Odit dolorum explicabo repudiandae ad sed harum quos nobis commodi, adipisci enim, saepe minima! Eligendi animi delectus similique suscipit tempora excepturi magni error laboriosam nemo! Minus asperiores ipsam corrupti illo enim repellendus repudiandae tempora, architecto doloribus non magnam impedit ad qui, mollitia rem quos repellat earum officia labore debitis optio distinctio deleniti maiores dolorem. Perferendis, veniam sint totam facere numquam minus cupiditate molestiae dolorum deserunt porro accusantium iure libero doloremque? Cumque fugit nobis facere facilis rem necessitatibus quam ipsam, corrupti quidem dolore porro laudantium hic harum ut eos velit commodi at veniam aliquam eligendi.
+            <table>
+                <tr>
+                    <th>Obrázek</th>
+                    <th>id</th>
+                    <th>Název</th>
+                    <th>id Autora</th>
+                    <th>hodnocení</th>
+                    <th>detaily</th>
+                </tr>
+                <?php
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "serialy";
+
+                // Create connection
+                $conn = new mysqli($servername, $username, $password, $dbname);
+
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+                $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $idS = $row['idS'];
+                        $sql = "SELECT hodnota from hodnoceni WHERE idS = '$idS'";
+                        $rating_result = $conn->query($sql);
+                        $counter = 0;
+                        $total = 0;
+                        while ($rating = $rating_result->fetch_assoc()) {
+                            $counter++;
+                            $total += $rating['hodnota'];
+                        }
+                        $ratingAVG = $total / $counter;
+                        echo "<tr>
+            <td><img src='../img/db/$idS.jpg'></td>" .
+                            "<td>" . $row['idS'] . "</td>
+            <td>" . $row['nazev'] . "</td>
+            <td>" . $row['idA'] . "</td>
+            <td>" . $ratingAVG . "</td>
+            <td><a href='detaily.php?idS=$idS'>odkaz</a>
+            </tr>";
+                    }
+                    $conn->close();
+                }
+                ?>
+            </table>
         </section>
 
         <footer>

@@ -20,3 +20,4 @@ switch ($_SESSION['page']) {
     default:
         echo "<br><b>user status error</b> 101";
 }
+?>
