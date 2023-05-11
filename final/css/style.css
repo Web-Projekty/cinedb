@@ -1,5 +1,11 @@
 :root {
-    --gradient-background-color: linear-gradient(45deg, var(--theme-page-background-color), var(--scroll-bar-hover), var(--theme-page-background-color), var(--scroll-bar-hover));
+    --gradient-background-color: linear-gradient(
+        45deg,
+        var(--theme-page-background-color),
+        var(--scroll-bar-hover),
+        var(--theme-page-background-color),
+        var(--scroll-bar-hover)
+    );
     --theme-text-color: whitesmoke;
     --theme-text-hover-color: rgb(135, 172, 228);
     --theme-text-background-color: #6f738538;
@@ -19,7 +25,7 @@
 body {
     background: var(--gradient-background-color);
     background-size: 1000% 1000%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     color: var(--theme-text-color);
 
     animation: background_animation 30s infinite ease;
@@ -151,7 +157,6 @@ section {
     border-radius: var(--border-radius);
     background-color: var(--theme-text-background-color);
 
-
     animation: blend-in 3s ease forwards;
 }
 
@@ -179,7 +184,12 @@ section {
     margin-bottom: 120px;
     padding: 40px;
 }
-
+/* Uživatelský profil */
+.user-profile {
+    margin: 40px 500px;
+    margin-bottom: 120px;
+    padding: 40px;
+}
 /* Statistiky */
 .statistics {
     margin: 40px 500px;
@@ -206,7 +216,6 @@ footer {
 
     border-top: 1px solid var(--theme-text-color);
     border-radius: var(--border-radius);
-
 }
 
 .footer-text {
@@ -216,7 +225,6 @@ footer {
     animation: slide-up 1s ease forwards;
     margin: 10px;
 }
-
 
 /* 
     ANIMATIONS 
@@ -314,11 +322,11 @@ footer {
     SCROLL BAR 
 */
 ::-webkit-scrollbar {
-    width: .6vw;
+    width: 0.6vw;
 }
-  
+
 ::-webkit-scrollbar-track {
-    background: var(--scroll-bar)
+    background: var(--scroll-bar);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -334,7 +342,6 @@ footer {
 */
 
 @media (max-width: 768px) {
-
     header {
         flex-direction: column;
     }
@@ -369,7 +376,10 @@ footer {
     .authors-list {
         margin: 25px 0;
     }
-
+    /* Uživatelský profil */
+    .user-profile {
+        margin: 25px 0;
+    }
     /* Statistiky */
     .statistics {
         margin: 25px 0;
