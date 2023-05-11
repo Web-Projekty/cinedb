@@ -74,7 +74,7 @@
                     }
                     fwrite($file, $write);
                 } else {
-                    echo "<a style='font-weight: bold;'>File error: </a>soubor hodnoceni.txt nenalezen";
+                    echo "<p><a style='font-weight: bold;'>File error: </a>204</p>";
                 }
             }
             ?>

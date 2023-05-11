@@ -1,2 +1,6 @@
 user status: 1xx
 	default case: 101
+files: 2xx
+	can't find file: 204
+website loading: 4xx
+	website does not exist: 404
