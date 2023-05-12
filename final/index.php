@@ -2,8 +2,7 @@
 <html lang="cs">
 
 <head>
-    <?php include "account/session_start.php";
-    $_SESSION['page'] = 1;?>
+    <?php include "account/session_start.php"; $_SESSION['page'] = 1;?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,18 +22,18 @@
             </div>
 
             <nav class="header-nav">
-                <li><a href="index.php" id="selected">Úvod</a></li>
-                <li><a href="pages/serialy.php">Seriály</a></li>
-                <li><a href="pages/autori.php">Autoři</a></li>
-                <li><a href="pages/statistiky.php">Statistiky</a></li>
-                <li><a href="pages/hodnoceni.php">Hodnocení</a></li>
+                <ul>
+                    <li><a href="index.php" id="selected">Úvod</a></li>
+                    <li><a href="pages/serialy.php">Seriály</a></li>
+                    <li><a href="pages/autori.php">Autoři</a></li>
+                    <li><a href="pages/statistiky.php">Statistiky</a></li>
+                    <li><a href="pages/hodnoceni.php">Hodnocení</a></li>
+                </ul>
             </nav>
 
             <div class="header-login">
                 <li>
-                    <?php
-                    include "account\user_status.php";
-                    ?>
+                    <?php include "account\user_status.php"; ?>
                 </li>
             </div>
         </header>
