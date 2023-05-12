@@ -86,7 +86,11 @@
                             $counter++;
                             $total += $rating['hodnota'];
                         }
-                        $ratingAVG = $total / $counter;
+                        if ($counter < 1) {
+                            $ratingAVG = "žádné recenze";
+                        }else{
+                            $ratingAVG = $total / $counter;
+                        }
                         echo "<tr>
             <td><img src='../img/db/$idS.jpg'></td>" .
                             "<td>" . $row['idS'] . "</td>
