@@ -38,7 +38,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT idS, nazev, idA from serialy WHERE idS = $idS";
+$sql = "SELECT idS, nazev, idA, type from serialy WHERE idS = $idS";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc(); ?>
@@ -50,6 +50,7 @@ if ($result->num_rows > 0) {
             <th>Název</th>
             <th>id Autora</th>
             <th>hodnocení</th>
+            <th>typ</th>
             <th>zpět</th>
         </tr>
 
@@ -63,7 +64,11 @@ if ($result->num_rows > 0) {
             $counter++;
             $total += $rating['hodnota'];
         }
-        $ratingAVG = $total / $counter;
+        if ($counter < 1) {
+            $ratingAVG = "žádné recenze";
+        } else {
+            $ratingAVG = $total / $counter;
+        }
 
         if ($result->num_rows > 0) {
             echo "<tr>
@@ -72,6 +77,7 @@ if ($result->num_rows > 0) {
             <td>" . $row['nazev'] . "</td>
             <td>" . $row['idA'] . "</td>
             <td>" . $ratingAVG . "</td>
+            <td>" . $row['type'] . "</td>
             <td><a href='serialy.php'>odkaz</a>
             </tr>";
         }
