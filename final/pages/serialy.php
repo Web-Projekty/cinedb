@@ -10,6 +10,7 @@
 
     <title>Databáze seriálů - Seriály</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/serialy.css">
     <style>
         table {
             border: 1px solid black;

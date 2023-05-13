@@ -26,8 +26,8 @@
                     <li><a href="../index.php">Úvod</a></li>
                     <li><a href="serialy.php">Seriály</a></li>
                     <li><a href="autori.php">Autoři</a></li>
-                    <li><a href="statistiky.php" id="selected">Statistiky</a></li>
-                    <li><a href="hodnoceni.php">Hodnocení</a></li>
+                    <li><a href="statistiky.php">Statistiky</a></li>
+                    <li><a href="hodnoceni.php" id="selected">Hodnocení</a></li>
                 </ul>
             </nav>
 

@@ -10,22 +10,8 @@
 
     <title>Databáze seriálů - Statistiky</title>
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        table {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
+    <link rel="stylesheet" href="../css/statistiky.css">
 
-        table td,
-        tr,
-        th {
-            border: 1px solid black;
-        }
-
-        img {
-            width: 100px;
-        }
-    </style>
 </head>
 
 <body>

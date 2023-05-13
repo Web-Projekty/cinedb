@@ -11,6 +11,7 @@
 
     <title>Databáze seriálů - Hodnocení</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
