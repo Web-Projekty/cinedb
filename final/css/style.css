@@ -73,7 +73,7 @@ header {
     width: 320px;
 }
 
-.header-nav {
+.header-nav ul {
     display: flex;
     justify-content: center;
     background-color: var(--theme-text-background-color);
@@ -112,16 +112,15 @@ header {
     font-weight: bold;
 }
 
-.header-login {
+.header-login li {
     display: flex;
     justify-content: center;
     background-color: var(--theme-text-background-color);
     border-radius: var(--border-radius);
 
     animation: slide-down 1s ease forwards;
-}
 
-.header-login li {
+
     margin: 5px 25px;
     list-style-type: none;
     font-size: large;
