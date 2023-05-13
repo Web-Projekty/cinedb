@@ -53,15 +53,12 @@
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-
+        
+        $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy";
         if(isset($_POST['vyhledat'])){
             $serialyH = $_POST["serialyH"];
             $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy WHERE '$serialyH' LIKE serialy.nazev";
-            $result = $conn->query($sql);
-            //nenapadá mě jak to vypsat, aby nevznikl error, nebo aby tam nebyly obě tabulky najednou
         }
-        
-        $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
