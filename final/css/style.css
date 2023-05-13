@@ -159,45 +159,10 @@ section {
     animation: blend-in 3s ease forwards;
 }
 
-/* Úvod */
-.about-website {
-    margin: 40px 500px;
-    margin-bottom: 120px;
-    padding: 40px;
-}
-
-.about-website .info {
-    font-size: 18px;
-}
-
-/* Seriály */
-.serials-list {
-    margin: 40px 500px;
-    margin-bottom: 120px;
-    padding: 40px;
-}
-
-/* Autoři */
-.authors-list {
-    margin: 40px 500px;
-    margin-bottom: 120px;
-    padding: 40px;
-}
-/* Uživatelský profil */
+/* 
+    Uživatelský profil 
+*/
 .user-profile {
-    margin: 40px 500px;
-    margin-bottom: 120px;
-    padding: 40px;
-}
-/* Statistiky */
-.statistics {
-    margin: 40px 500px;
-    margin-bottom: 120px;
-    padding: 40px;
-}
-
-/* Hodnocení */
-.rating {
     margin: 40px 500px;
     margin-bottom: 120px;
     padding: 40px;
