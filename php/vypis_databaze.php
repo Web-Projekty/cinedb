@@ -57,7 +57,7 @@
         $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy";
         if(isset($_POST['vyhledat'])){
             $serialyH = $_POST["serialyH"];
-            $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy WHERE '$serialyH' LIKE serialy.nazev";
+            $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy WHERE serialy.nazev LIKE '%$serialyH%'"; 
         }
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
