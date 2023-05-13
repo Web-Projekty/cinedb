@@ -32,9 +32,11 @@
             </nav>
 
             <div class="header-login">
-                <li>
-                    <?php include "account\user_status.php"; ?>
-                </li>
+                <ul>
+                    <li>
+                        <?php include "account/user_status.php"; ?>
+                    </li>
+                </ul>
             </div>
         </header>
 
