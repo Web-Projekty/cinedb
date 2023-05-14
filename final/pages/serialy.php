@@ -1,9 +1,10 @@
+<?php include "../account/session_start.php";
+$_SESSION['page'] = 2;
+include "../account/timed_log_out.php"; ?>
 <!DOCTYPE html>
 <html lang="cs">
 
 <head>
-    <?php include "../account/session_start.php";
-    $_SESSION['page'] = 2; ?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -83,9 +84,9 @@
                     die("Connection failed: " . $conn->connect_error);
                 }
                 $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy";
-                if(isset($_POST['vyhledat'])){
+                if (isset($_POST['vyhledat'])) {
                     $serialyH = $_POST["serialyH"];
-                    $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy WHERE serialy.nazev LIKE '%$serialyH%'"; 
+                    $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy WHERE serialy.nazev LIKE '%$serialyH%'";
                 }
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
@@ -101,7 +102,7 @@
                         }
                         if ($counter < 1) {
                             $ratingAVG = "žádné recenze";
-                        }else{
+                        } else {
                             $ratingAVG = $total / $counter;
                         }
                         echo "<tr>
@@ -119,7 +120,7 @@
             </table>
         </section>
 
-        <?php include "../include/footer.php"?>
+        <?php include "../include/footer.php" ?>
     </div>
 </body>
 
