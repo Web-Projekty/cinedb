@@ -1,11 +1,14 @@
-<?php include "session_start.php" ?>
+<?php include "session_start.php";
+$_SESSION['page'] = 4;
+include "timed_log_out.php"; ?>
 <!DOCTYPE html>
 <html lang="cs">
 
-<style>body{
-    display: flex;
-}
-    </style>
+<style>
+    body {
+        display: flex;
+    }
+</style>
 
 <head>
     <meta charset="UTF-8">
@@ -15,10 +18,14 @@
 </head>
 
 <body id="flex"><?php
-            session_unset();
-            echo "<p>succesfuly logged out, redirecting in: </p>";
-        ?>
-     <p id="counter" onload="startCount()" style="flex-direction: row;">5</p>
+                if (!empty($_SESSION['msg'])) {
+                    echo $_SESSION['msg'];
+                }
+
+                session_unset();
+                echo "<p>succesfuly logged out, redirecting in: </p>";
+                ?>
+    <p id="counter" onload="startCount()" style="flex-direction: row;">5</p>
     <script>
         timer = setInterval(count, 1000); // 200 = 200ms delay between counter changes. Lower num = faster, Bigger = slower.
 

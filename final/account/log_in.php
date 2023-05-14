@@ -44,6 +44,7 @@
             $_SESSION['username'] = $row['username'];
             $_SESSION['uid'] = $row['uid'];
             $_SESSION['profileId'] = $row['profileId'];
+            $_SESSION['time'] = time();
         }
         $conn->close();
     }

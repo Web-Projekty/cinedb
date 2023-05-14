@@ -1,8 +1,11 @@
+<?php include "account/session_start.php";
+    $_SESSION['page'] = 1;
+    include "account/timed_log_out.php"; ?>
 <!DOCTYPE html>
 <html lang="cs">
 
 <head>
-    <?php include "account/session_start.php"; $_SESSION['page'] = 1;?>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,7 +55,7 @@
 
         </section>
 
-        <?php include "include/footer.php"?>
+        <?php include "include/footer.php" ?>
     </div>
 
 </body>

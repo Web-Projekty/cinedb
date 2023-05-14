@@ -46,6 +46,7 @@
                     <td>Seriály</td>
                     <td>Filmy</td>
                     <td>Autoři</td>
+                    <td>Uživatelé</td>
                 </tr>
                 <tr>
                     <?php
@@ -61,25 +62,47 @@
                     if ($conn->connect_error) {
                         die("Connection failed: " . $conn->connect_error);
                     }
+                    //počet seriálů
                     $sql = "SELECT COUNT(idS) as 'tv' from serialy WHERE type = 'tv'";
                     $result = $conn->query($sql);
                     $tv_show_assoc = mysqli_fetch_assoc($result);
                     $tv = $tv_show_assoc['tv'];
-
+                    //počet filmů
                     $sql = "SELECT COUNT(idS) as 'movies' from serialy WHERE type = 'movie'";
                     $result = $conn->query($sql);
                     $movies_assoc = mysqli_fetch_assoc($result);
                     $movies = $movies_assoc['movies'];
-
+                    //počet autorů
                     $sql = "SELECT COUNT(idA) as 'authors' from autori";
                     $result = $conn->query($sql);
                     $authors_assoc = mysqli_fetch_assoc($result);
                     $authors = $authors_assoc['authors'];
+                    mysqli_close($conn);
 
+
+                    //změna databáze
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $dbname = "accounts";
+                    // Create connection
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+
+                    // Check connection
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+                    //počet uživatelů
+                    $sql = "SELECT COUNT(uid) as 'users' from users";
+                    $result = $conn->query($sql);
+                    $authors_assoc = mysqli_fetch_assoc($result);
+                    $users = $authors_assoc['users'];
+                    mysqli_close($conn);
                     echo "
                     <td>$tv</td>
                     <td>$movies</td>
-                    <td>$authors</td>";
+                    <td>$authors</td>
+                    <td>$users</td>";
                     ?>
                 </tr>
             </table>
