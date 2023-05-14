@@ -26,7 +26,7 @@
 
 <body>
     <h2>hledací funkce</h2>
-    <form action="" method="GET">
+    <form action="" method="POST">
         <input type="text" name="serialyH">
         <input type="submit" value="vyhledat" name="vyhledat">
 
@@ -63,12 +63,12 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $radic = $_GET["radic"];
+        $radic = $_POST["radic"];
         $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy ORDER BY '$radic'";
         if(isset($_POST['vyhledat'])){
             $serialyH = $_POST["serialyH"];
             $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy WHERE serialy.nazev LIKE '%$serialyH%' ORDER BY '$radic'"; 
-        }
+        } 
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
