@@ -3,4 +3,5 @@ user status: 1xx
 files: 2xx
 	can't find file: 204
 website loading: 4xx
+	access denied: 403
 	website does not exist: 404
