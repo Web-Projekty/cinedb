@@ -15,7 +15,7 @@
         <input type="password" name="password" placeholder="password">
         <button type="submit">sign up</button>
     </form>
-    <a href="account_login.php"><button>login</button></a>
+    <a href="log_in.php"><button>login</button></a>
     <?php
     if (!empty($_GET['username']) && !empty($_GET['password'])) {
         $servername = "localhost";
