@@ -28,9 +28,9 @@ include "../account/timed_log_out.php"; ?>
 </head>
 <?php
 //Nelze otevřít v případě, že je otevřený přímo
-$servername = "localhost";
-$username = "root";
-$password = "";
+$servername = "127.0.0.1";
+$username = "cineDB";
+$password = "#BDenic2305";
 $dbname = "serialy";
 $idS = $_GET['idS'];
 // Create connection
