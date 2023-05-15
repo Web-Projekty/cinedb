@@ -56,10 +56,10 @@
 
             <?php
             if (!empty($_GET['username']) && !empty($_GET['password'])) {
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "accounts";
+                $servername = "localhost:3306";
+                $username = "cineDB";
+                $password = "#BDenic2305";
+                $dbname = "cineDB";
 
                 $user = $_GET['username'];
                 $pass = hash("gost-crypto", $_GET['password']);

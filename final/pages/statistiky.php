@@ -50,10 +50,7 @@
                 </tr>
                 <tr>
                     <?php
-                    $servername = "127.0.0.1";
-                    $username = "cineDB";
-                    $password = "#BDenic2305";
-                    $dbname = "serialy";
+                    include "../db/active_db.php";
 
                     // Create connection
                     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -77,21 +74,6 @@
                     $result = $conn->query($sql);
                     $authors_assoc = mysqli_fetch_assoc($result);
                     $authors = $authors_assoc['authors'];
-                    mysqli_close($conn);
-
-
-                    //změna databáze
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "";
-                    $dbname = "accounts";
-                    // Create connection
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-
-                    // Check connection
-                    if ($conn->connect_error) {
-                        die("Connection failed: " . $conn->connect_error);
-                    }
                     //počet uživatelů
                     $sql = "SELECT COUNT(uid) as 'users' from users";
                     $result = $conn->query($sql);

@@ -28,10 +28,8 @@ include "../account/timed_log_out.php"; ?>
 </head>
 <?php
 //Nelze otevřít v případě, že je otevřený přímo
-$servername = "127.0.0.1";
-$username = "cineDB";
-$password = "#BDenic2305";
-$dbname = "serialy";
+include "../db/active_db.php";
+
 $idS = $_GET['idS'];
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
