@@ -56,7 +56,7 @@ include "../account/timed_log_out.php"; ?>
             </div>
         </header>
 
-        <section class="serials-list">
+        <section class="serials">
             <form action="" method="POST">
                 <?php
                     $serialyH = "";
