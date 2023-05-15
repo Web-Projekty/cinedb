@@ -18,10 +18,7 @@
     <?php
     if ($_SESSION['user'] == true) {
         if (!empty($_POST['submit'])) {
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "accounts";
+            include "../db/active_db.php";
 
             // Create connection
             $conn = new mysqli($servername, $username, $password, $dbname);

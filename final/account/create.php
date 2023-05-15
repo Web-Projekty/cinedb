@@ -30,9 +30,9 @@
                 </ul>
             </nav>
 
-             <div class="header-login">
+            <div class="header-login">
                 <ul>
-                    <li  id="selected">Registrování...</li>
+                    <li id="selected">Registrování...</li>
                 </ul>
             </div>
         </header>
@@ -45,21 +45,18 @@
                     <label for="usern">Uživatelské jméno</label>
                     <input type="text" id="usern" name="username" placeholder="Jméno">
                 </div>
-                
+
                 <div class="pw">
                     <label for="passw">Heslo</label>
                     <input type="password" id="usern" name="password" placeholder="Heslo">
                 </div>
-                
+
                 <button type="submit">Registrovat</button>
             </form>
 
             <?php
             if (!empty($_GET['username']) && !empty($_GET['password'])) {
-                $servername = "localhost:3306";
-                $username = "cineDB";
-                $password = "#BDenic2305";
-                $dbname = "cineDB";
+                include "../db/active_db.php";
 
                 $user = $_GET['username'];
                 $pass = hash("gost-crypto", $_GET['password']);

@@ -30,7 +30,7 @@
                 </ul>
             </nav>
 
-             <div class="header-login">
+            <div class="header-login">
                 <ul>
                     <li id="selected">Přihlašování...</li>
                 </ul>
@@ -46,21 +46,18 @@
                     <label for="usern">Uživatelské jméno</label>
                     <input type="text" id="usern" name="username" placeholder="Jméno">
                 </div>
-                
+
                 <div class="pw">
                     <label for="passw">Heslo</label>
                     <input type="password" id="passw" name="password" placeholder="Heslo">
                 </div>
-                
+
                 <button type="submit">Přihlásit</button>
             </form>
 
             <?php
             if (!empty($_GET['username']) && !empty($_GET['password'])) {
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "accounts";
+                include "../db/active_db.php";
 
                 $user = $_GET['username'];
                 $pass = hash("gost-crypto", $_GET['password']);
@@ -92,7 +89,7 @@
                 <p>Ještě nemáte účet?</p>
                 <a href="create.php"><button>Registrovat se</button></a>
             </div>
-            
+
         </section>
 
         <?php include "../include/footer.php" ?>

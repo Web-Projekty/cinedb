@@ -21,10 +21,7 @@
     </form>
     <a href="session_test.php"><button>session test</button></a>
     <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "accounts";
+    include "../db/active_db.php";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     // Check connection
