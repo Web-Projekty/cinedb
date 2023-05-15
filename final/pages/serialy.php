@@ -58,8 +58,19 @@ include "../account/timed_log_out.php"; ?>
 
         <section class="serials-list">
             <form action="" method="POST">
-                <input type="text" name="serialyH">
+                <?php
+                    $serialyH = $_POST["serialyH"]; //zapamatování inputu
+                ?>
+                <input type="text" name="serialyH" value="<?php echo $serialyH ?>">
                 <input type="submit" value="vyhledat" name="vyhledat">
+
+                <select name="radic">
+                    <option value="serialy.nazev ASC">od A-Z</option>
+                    <option value="serialy.nazev DESC">od Z-A</option>
+                    <option value="serialy.idS ASC">podle ID</option>
+                    <option value="serialy.idA ASC">podle autora</option>
+                </select>
+                <input type="submit" value="řadit" name="radit">
             </form>
             <table>
                 <tr>
@@ -87,17 +98,13 @@ include "../account/timed_log_out.php"; ?>
                 $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy";
                 if(isset($_POST['vyhledat'])){
                     $serialyH = $_POST["serialyH"];
-                    $sql .= " WHERE serialy.nazev LIKE '%$serialyH%'"; 
-                }
-                if(isset($_POST['vyhledat']) && isset($_POST['radic'])){
-                    $radic = $_POST["radic"];
-                    $serialyH = $_POST["serialyH"];
-                    $sql .= " ORDER BY $radic"; 
+                    $sql .= " WHERE serialy.nazev LIKE '%$serialyH%'";
                 }
                 if(isset($_POST["radit"])){
                     $radic = $_POST["radic"];
-                    $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy ORDER BY $radic";
-                }}
+                    $serialyH = $_POST["serialyH"];
+                    $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy WHERE serialy.nazev LIKE '%$serialyH%' ORDER BY $radic";
+                }
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {

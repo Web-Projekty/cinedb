@@ -27,11 +27,14 @@
 <body>
     <h2>hledací funkce</h2>
     <form action="" method="POST">
-        <input type="text" name="serialyH">
+        <?php
+            $serialyH = $_POST["serialyH"];
+        ?>
+        <input type="text" name="serialyH" value="<?php echo $serialyH ?>">
         <input type="submit" value="vyhledat" name="vyhledat">
 
         řazení
-        <select name="radic" id="radic">
+        <select name="radic">
             <option value="serialy.nazev ASC">od A-Z</option>
             <option value="serialy.nazev DESC">od Z-A</option>
             <option value="serialy.idS ASC">podle ID</option>
@@ -66,18 +69,13 @@
         $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy";
         if(isset($_POST['vyhledat'])){
             $serialyH = $_POST["serialyH"];
-            $sql .= " WHERE serialy.nazev LIKE '%$serialyH%'"; 
-            if(isset($_POST["radic"])){
-                $radic = $_POST["radic"];
-                $sql .= " ORDER BY $radic";
-            }
+            $sql .= " WHERE serialy.nazev LIKE '%$serialyH%'";
         }
         if(isset($_POST["radit"])){
             $radic = $_POST["radic"];
             $serialyH = $_POST["serialyH"];
             $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy WHERE serialy.nazev LIKE '%$serialyH%' ORDER BY $radic";
         }
-
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
