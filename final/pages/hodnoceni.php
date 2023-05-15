@@ -91,10 +91,10 @@ include "../account/timed_log_out.php";
 
                                 if (filesize($filename) == 0) { //je potřeba odřádkovat??
                                     //zápis s odřádkováním
-                                    $write = $_POST['review'] . "|" . $_POST['star'] . "|" . date("H:i") . "|" . $_SESSION['username'];
+                                    $write = $_POST['review'] . "|" . $_POST['star'] . "|" . date("H:i d. m. Y") . "|" . $_SESSION['username'];
                                 } else {
                                     //zápis bez odřádkování
-                                    $write = "\n" . $_POST['review'] . "|" . $_POST['star'] . "|" . date("H:i") . "|" . $_SESSION['username'];
+                                    $write = "\n" . $_POST['review'] . "|" . $_POST['star'] . "|" . date("H:i d. m. Y") . "|" . $_SESSION['username'];
                                 }
                                 fwrite($file, $write);
                                 echo "vaše hodnocení bylo úspěšně zaznamenáno";
