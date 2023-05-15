@@ -25,10 +25,7 @@
 </head>
 <?php
 //Nelze otevřít v případě, že je otevřený přímo
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "serialy";
+include "../final/db/active_db.php";
 $idS = $_GET['idS'];
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
