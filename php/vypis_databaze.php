@@ -64,11 +64,15 @@
         }
 
         $radic = $_POST["radic"];
-        $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy ORDER BY '$radic'";
+        $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy";
         if(isset($_POST['vyhledat'])){
             $serialyH = $_POST["serialyH"];
-            $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy WHERE serialy.nazev LIKE '%$serialyH%' ORDER BY '$radic'"; 
-        } 
+            $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy WHERE serialy.nazev LIKE '%$serialyH%'"; 
+        }
+        if(isset($_POST["radit"])){
+            $radic = $_POST["radic"];
+            $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy ORDER BY $radic";
+        }
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
