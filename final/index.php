@@ -12,7 +12,7 @@
     <meta name="author" content="Pták, Vlček, Rehák">
     <meta name="keywords" content="databáze seriálů, hodnocení seriálů">
 
-    <title>Databáze seriálů - Hodnocení</title>
+    <title>CineDB - Databáze seriálů</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/index.css">
 </head>
