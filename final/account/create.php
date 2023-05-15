@@ -67,7 +67,7 @@
                     die("Connection failed: " . $conn->connect_error);
                 }
 
-                $sql = "INSERT INTO users (uid, username, password) VALUES ('NULL', '$user', '$pass')";
+                $sql = "INSERT INTO users (username, password) VALUES ('$user', '$pass')";
 
                 if ($conn->query($sql) === TRUE) {
                     echo "Registrace proběhla úspěšně!";
