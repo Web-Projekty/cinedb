@@ -1,7 +1,7 @@
-<?php 
-    include "../account/session_start.php";
-    $_SESSION['page'] = 2;
-    include "../account/timed_log_out.php"; 
+<?php
+include "../account/session_start.php";
+$_SESSION['page'] = 2;
+include "../account/timed_log_out.php";
 ?>
 <!DOCTYPE html>
 <html lang="cs">
@@ -49,6 +49,9 @@
 
                 <?php if (isset($_POST['review']) && empty($_POST['review'])) {
                     echo "<input type='text' name='review' placeholder='Toto pole je povinné' style='border: 1px solid red;'>";
+                } elseif (isset($_POST['review']) && $_POST['review'] != NULL) {
+                    $review = $_POST['review'];
+                    echo "<input type='text' name='review' placeholder='Recenze stránky...'value='$review' style='border: 1px solid black;'>";
                 } else {
                     echo "<input type='text' name='review' placeholder='Recenze stránky...' style='border: 1px solid black;'>";
                 } ?>
@@ -67,24 +70,67 @@
                     echo "<a style='color:red;'>Toto pole je povinné</a>";
                 }
                 ?>
-                <button type="submit">odeslat recenzi</button>
+                <button type="submit" name="submit" value="1">odeslat recenzi</button>
             </form>
             <?php
+            $filename = "../txt/hodnoceni.txt";
             if (!empty($_POST['review']) && !empty($_POST['star']) && isset($_POST['review']) && isset($_POST['star']) && $_POST['star'] != 0) {
-                if (file_exists("hodnoceni.txt")) {
-                    $filename = "hodnoceni.txt";
-                    $file = fopen($filename, "a");
+                if (!empty($_POST['submit']) && $_POST['submit'] = 1) {
+                    if (file_exists("../txt/hodnoceni.txt")) {
+                        $filename = "../txt/hodnoceni.txt";
+                        $file = fopen($filename, "a");
 
-                    if (filesize($filename) == 0) { //je potřeba odřádkovat??
-                        $write = $_POST['review'] . "|" . $_POST['star'];
+                        if (filesize($filename) == 0) { //je potřeba odřádkovat??
+                            $write = $_POST['review'] . "|" . $_POST['star'];
+                        } else {
+                            $write = "\n" . $_POST['review'] . "|" . $_POST['star'];
+                        }
+                        fwrite($file, $write);
+                        echo "vaše hodnocení bylo úspěšně zaznamenáno";
                     } else {
-                        $write = "\n" . $_POST['review'] . "|" . $_POST['star'];
+                        echo "<p><a style='font-weight: bold;'>File error: </a>204</p>";
                     }
-                    fwrite($file, $write);
-                } else {
-                    echo "<p><a style='font-weight: bold;'>File error: </a>204</p>";
                 }
             }
+
+            //výpis hodnocení
+            $sum = 0;
+            $counter = 0;
+            $file = fopen($filename, "r");
+            echo "<table>
+    <tr>
+        <th>Recenze</th>
+        <th>
+            Hodnocení
+        </th>
+    </tr>";
+            while (!feof($file)) {
+                $line = fgets($file);
+                $values = explode("|", $line);
+                echo "
+        <tr>
+            <td>$values[0]</td>
+            <td>";
+                for ($i = 0; $i < 5; $i++) {
+                    if ($i < $values[1]) {
+                        echo "<a class='star_on'>★</a>";
+                    } else {
+                        echo "<a class='star_off'>★</a>";
+                    }
+                }
+                //průměr hodnocení
+                $sum += $values[1];
+                $counter += 1;
+                echo "</td>
+              </tr>";
+            }
+            echo "<tr>
+    <th>Průměrné hodnocení</th>
+      <td>";
+            echo round($sum / $counter, 2);
+            echo "</td>
+</tr>
+</table>";
             ?>
         </section>
 
