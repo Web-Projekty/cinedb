@@ -10,6 +10,7 @@ include "../account/timed_log_out.php"; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>CineDB - Hodnocení</title>
+
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/rating.css">
     <script src="../javascript/rating.js"></script>
@@ -22,8 +23,8 @@ include "../account/timed_log_out.php"; ?>
                 <img src="../img/logo/logo_exp_wStroke.png" alt="logo">
             </div>
 
-            <nav class="header-nav">
-                <ul>
+            <nav>
+                <ul class="header-nav">
                     <li><a href="../index.php">Úvod</a></li>
                     <li><a href="serialy.php">Seriály</a></li>
                     <li><a href="autori.php">Autoři</a></li>
