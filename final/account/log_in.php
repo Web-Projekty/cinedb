@@ -6,51 +6,95 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account login</title>
+    <title>CineDB - Přihlášení</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
-<h2>Account login</h2>
-<form method="get">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <button type="submit">login</button>
-</form>
 
 <body>
-    <?php
-    if (!empty($_GET['username']) && !empty($_GET['password'])) {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "accounts";
+    <div class="flex-box">
 
-        $user = $_GET['username'];
-        $pass = hash("gost-crypto", $_GET['password']);
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+        <header>
+            <div class="header-title">
+                <img src="../img/logo/logo_exp_wStroke.png" alt="logo">
+            </div>
 
-        $sql = "SELECT uid, username, password, profileId FROM users WHERE username = '$user'";
-        $result = $conn->query($sql);
-        //echo $conn->info;
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="../index.php" id="selected">Úvod</a></li>
+                    <li><a href="../pages/serialy.php">Seriály</a></li>
+                    <li><a href="../pages/autori.php">Autoři</a></li>
+                    <li><a href="../pages/statistiky.php">Statistiky</a></li>
+                    <li><a href="../pages/hodnoceni.php">Hodnocení</a></li>
+                </ul>
+            </nav>
 
-        $row = $result->fetch_assoc();
-        if (!empty($row) && $row['password'] == hash("gost-crypto", $_GET['password'])) {
-            echo "succesfuly logged in<br>
-            welcome " . $row['username'];
-            $_SESSION['user'] = true;
-            $_SESSION['username'] = $row['username'];
-            $_SESSION['uid'] = $row['uid'];
-            $_SESSION['profileId'] = $row['profileId'];
-            $_SESSION['time'] = time();
-        }
-        $conn->close();
-    }
+             <div class="header-login">
+                <ul>
+                    <li>Přihlašování...</li>
+                </ul>
+            </div>
+        </header>
 
-    ?>
-    <a href="../index.php"><button>back</button></a>
+        <section class="login">
+
+            <h2>Přihlášení</h2>
+
+            <form method="get">
+                <label for="usern">Uživatelské jméno</label>
+                <input type="text" id="usern" name="username" placeholder="Jméno">
+
+                <label for="passw">Heslo</label>
+                <input type="password" id="passw" name="password" placeholder="Heslo">
+
+                <button type="submit">Přihlásit</button>
+            </form>
+            <a href="../index.php"><button>Zpátky</button></a>
+
+            <?php
+            if (!empty($_GET['username']) && !empty($_GET['password'])) {
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "accounts";
+
+                $user = $_GET['username'];
+                $pass = hash("gost-crypto", $_GET['password']);
+                // Create connection
+                $conn = new mysqli($servername, $username, $password, $dbname);
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                $sql = "SELECT uid, username, password, profileId FROM users WHERE username = '$user'";
+                $result = $conn->query($sql);
+                //echo $conn->info;
+
+                $row = $result->fetch_assoc();
+                if (!empty($row) && $row['password'] == hash("gost-crypto", $_GET['password'])) {
+                    echo "Úspěšně přihlášen!<br>
+                    Vítej " . $row['username'];
+                    $_SESSION['user'] = true;
+                    $_SESSION['username'] = $row['username'];
+                    $_SESSION['uid'] = $row['uid'];
+                    $_SESSION['profileId'] = $row['profileId'];
+                    $_SESSION['time'] = time();
+                }
+                $conn->close();
+            }
+            ?>
+            <div class="register">
+                <p>Ještě nemáte účet?</p>
+                <a href="create.php"><button>Registrovat se</button></a>
+            </div>
+            
+        </section>
+
+        <?php include "../include/footer.php" ?>
+    </div>
+
 </body>
 
 </html>
