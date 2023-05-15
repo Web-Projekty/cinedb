@@ -89,10 +89,7 @@ include "../account/timed_log_out.php"; ?>
                     <th>detaily</th>
                 </tr>
                 <?php
-                $servername = "127.0.0.1";
-                $username = "cineDB";
-                $password = "BDenic2305";
-                $dbname = "serialy";
+                include "../db/active_db.php";
 
                 // Create connection
                 $conn = new mysqli($servername, $username, $password, $dbname);
