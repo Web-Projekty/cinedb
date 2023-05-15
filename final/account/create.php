@@ -22,7 +22,7 @@
 
             <nav>
                 <ul class="header-nav">
-                    <li><a href="../index.php" id="selected">Úvod</a></li>
+                    <li><a href="../index.php">Úvod</a></li>
                     <li><a href="../pages/serialy.php">Seriály</a></li>
                     <li><a href="../pages/autori.php">Autoři</a></li>
                     <li><a href="../pages/statistiky.php">Statistiky</a></li>
@@ -32,7 +32,7 @@
 
              <div class="header-login">
                 <ul>
-                    <li>Registrování...</li>
+                    <li  id="selected">Registrování...</li>
                 </ul>
             </div>
         </header>

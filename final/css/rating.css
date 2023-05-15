@@ -1,11 +1,9 @@
 .rating {
-   margin: 40px 500px;
-   margin-bottom: 120px;
-   padding: 40px;
+   display: flex;
+   flex-direction: column;
 }
 
 .hidden {
-   position: absolute;
    opacity: 0;
    width: 0;
    height: 0;

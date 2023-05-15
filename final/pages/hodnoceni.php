@@ -50,7 +50,7 @@
                 <?php if (isset($_POST['review']) && empty($_POST['review'])) {
                     echo "<input type='text' name='review' placeholder='Toto pole je povinné' style='border: 1px solid red;'>";
                 } else {
-                    echo "<input type='text' name='review' placeholder='Recenze stánky...' style='border: 1px solid black;'>";
+                    echo "<input type='text' name='review' placeholder='Recenze stránky...' style='border: 1px solid black;'>";
                 } ?>
                 <input type="radio" name="star" class="hidden" value="0" checked>
                 <label><input type="radio" name="star" class="hidden" value="1">

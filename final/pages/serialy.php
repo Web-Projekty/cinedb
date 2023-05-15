@@ -136,7 +136,7 @@ include "../account/timed_log_out.php"; ?>
                     }
                     $conn->close();
                 }
-                ?>
+            ?>
             </table>
         </section>
 
