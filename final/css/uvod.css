@@ -1,17 +1,21 @@
-.serials-list {
+.about-website {
     margin: 40px 500px;
     margin-bottom: 120px;
     padding: 40px;
 }
 
+.about-website .info {
+    font-size: 18px;
+}
+
 @media screen and (max-width: 768px) {
-    .serials-list {
+    .about-website {
         margin: 0;
     }
 }
 
 @media screen and (max-width: 1440px) {
-    .serials-list {
+    .about-website {
         margin: 0;
     }
 }
