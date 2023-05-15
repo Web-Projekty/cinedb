@@ -38,15 +38,19 @@
         </header>
 
         <section class="register">
-            
+
             <h2>Registrace</h2>
             <form method="get">
-                <label for="usern">Uživatelské jméno</label>
-                <input type="text" name="username" placeholder="Jméno">
-
-                <label for="passw">Heslo</label>
-                <input type="password" name="password" placeholder="Heslo">
-
+                <div class="un">
+                    <label for="usern">Uživatelské jméno</label>
+                    <input type="text" name="username" placeholder="Jméno">
+                </div>
+                
+                <div class="pw">
+                    <label for="passw">Heslo</label>
+                    <input type="password" name="password" placeholder="Heslo">
+                </div>
+                
                 <button type="submit">Registrovat</button>
             </form>
 
@@ -83,7 +87,6 @@
                 <p>Už máte účet?</p>
                 <a href="log_in.php"><button>Přihlásit se</button></a>
             </div>
-            
         </section>
 
         <?php include "../include/footer.php" ?>

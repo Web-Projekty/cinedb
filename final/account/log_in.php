@@ -42,15 +42,18 @@
             <h2>Přihlášení</h2>
 
             <form method="get">
-                <label for="usern">Uživatelské jméno</label>
-                <input type="text" id="usern" name="username" placeholder="Jméno">
-
-                <label for="passw">Heslo</label>
-                <input type="password" id="passw" name="password" placeholder="Heslo">
-
+                <div class="un">
+                    <label for="usern">Uživatelské jméno</label>
+                    <input type="text" name="username" placeholder="Jméno">
+                </div>
+                
+                <div class="pw">
+                    <label for="passw">Heslo</label>
+                    <input type="password" name="password" placeholder="Heslo">
+                </div>
+                
                 <button type="submit">Přihlásit</button>
             </form>
-            <a href="../index.php"><button>Zpátky</button></a>
 
             <?php
             if (!empty($_GET['username']) && !empty($_GET['password'])) {
