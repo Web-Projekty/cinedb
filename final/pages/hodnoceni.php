@@ -91,46 +91,49 @@ include "../account/timed_log_out.php";
                         echo "<p><a style='font-weight: bold;'>File error: </a>204</p>";
                     }
                 }
+                fclose($file);
             }
 
             //výpis hodnocení
-            $sum = 0;
-            $counter = 0;
-            $file = fopen($filename, "r");
-            echo "<table>
+            if (filesize($filename) != 0) {
+                $sum = 0;
+                $counter = 0;
+                $file = fopen($filename, "r");
+                echo "<table>
     <tr>
         <th>Recenze</th>
         <th>
             Hodnocení
         </th>
     </tr>";
-            while (!feof($file)) {
-                $line = fgets($file);
-                $values = explode("|", $line);
-                echo "
+                while (!feof($file)) {
+                    $line = fgets($file);
+                    $values = explode("|", $line);
+                    echo "
         <tr>
             <td>$values[0]</td>
             <td>";
-                for ($i = 0; $i < 5; $i++) {
-                    if ($i < $values[1]) {
-                        echo "<a class='star_on'>★</a>";
-                    } else {
-                        echo "<a class='star_off'>★</a>";
+                    for ($i = 0; $i < 5; $i++) {
+                        if ($i < $values[1]) {
+                            echo "<a class='star_on'>★</a>";
+                        } else {
+                            echo "<a class='star_off'>★</a>";
+                        }
                     }
-                }
-                //průměr hodnocení
-                $sum += $values[1];
-                $counter += 1;
-                echo "</td>
+                    //průměr hodnocení
+                    $sum += $values[1];
+                    $counter += 1;
+                    echo "</td>
               </tr>";
-            }
-            echo "<tr>
+                }
+                echo "<tr>
     <th>Průměrné hodnocení</th>
       <td>";
-            echo round($sum / $counter, 2);
-            echo "</td>
+                echo round($sum / $counter, 2);
+                echo "</td>
 </tr>
 </table>";
+            }
             ?>
         </section>
 

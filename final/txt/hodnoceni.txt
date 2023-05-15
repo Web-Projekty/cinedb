@@ -1,19 +1,4 @@
-skvělá stránka|4
-skvělá stránka|3
-asdasd|5
-asdasd|5
-asdasd|5
-skvělá stránka|4
-hnus|3
-hnus|3
-hnus|3
-Yes|2
-Yes|2
-Yes|2
-hnus|3
-hnus|3
-hnus|3
-hnus|3
-kj|2
-kj|2
-kj|2
+hnus|1
+skvělá stránka|5
+meh...|2
+nice|5
