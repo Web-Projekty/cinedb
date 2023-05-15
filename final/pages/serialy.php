@@ -71,9 +71,9 @@ include "../account/timed_log_out.php"; ?>
                     <th>detaily</th>
                 </tr>
                 <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
+                $servername = "localhost3306";
+                $username = "cineDB";
+                $password = "#BDenic2305";
                 $dbname = "serialy";
 
                 // Create connection
@@ -83,11 +83,21 @@ include "../account/timed_log_out.php"; ?>
                 if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
                 }
+
                 $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy";
-                if (isset($_POST['vyhledat'])) {
+                if(isset($_POST['vyhledat'])){
                     $serialyH = $_POST["serialyH"];
-                    $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy WHERE serialy.nazev LIKE '%$serialyH%'";
+                    $sql .= " WHERE serialy.nazev LIKE '%$serialyH%'"; 
                 }
+                if(isset($_POST['vyhledat']) && isset($_POST['radic'])){
+                    $radic = $_POST["radic"];
+                    $serialyH = $_POST["serialyH"];
+                    $sql .= " ORDER BY $radic"; 
+                }
+                if(isset($_POST["radit"])){
+                    $radic = $_POST["radic"];
+                    $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy ORDER BY $radic";
+                }}
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
