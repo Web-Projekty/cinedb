@@ -20,8 +20,8 @@
                 <img src="../img/logo/logo_exp_wStroke.png" alt="logo">
             </div>
 
-            <nav class="header-nav">
-                <ul>
+            <nav>
+                <ul class="header-nav">
                     <li><a href="../index.php" id="selected">Úvod</a></li>
                     <li><a href="../pages/serialy.php">Seriály</a></li>
                     <li><a href="../pages/autori.php">Autoři</a></li>
@@ -43,12 +43,12 @@
             <form method="get">
                 <div class="un">
                     <label for="usern">Uživatelské jméno</label>
-                    <input type="text" name="username" placeholder="Jméno">
+                    <input type="text" id="usern" name="username" placeholder="Jméno">
                 </div>
                 
                 <div class="pw">
                     <label for="passw">Heslo</label>
-                    <input type="password" name="password" placeholder="Heslo">
+                    <input type="password" id="usern" name="password" placeholder="Heslo">
                 </div>
                 
                 <button type="submit">Registrovat</button>
