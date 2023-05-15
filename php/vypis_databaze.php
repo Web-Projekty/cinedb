@@ -56,9 +56,9 @@
             <th>detaily</th>
         </tr>
         <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
+        $servername = "127.0.0.1";
+        $username = "cineDB";
+        $password = "#BDenic2305";
         $dbname = "serialy";
 
         // Create connection
