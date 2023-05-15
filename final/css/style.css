@@ -120,7 +120,6 @@ header {
 
     animation: slide-down 1s ease forwards;
 
-
     margin: 5px 25px;
     list-style-type: none;
     font-size: large;
@@ -306,15 +305,12 @@ footer {
 */
 
 @media (max-width: 768px) {
+
     header {
         flex-direction: column;
     }
 
-    .header-title {
-        margin-bottom: 25px;
-    }
-
-    .header-nav {
+    .header-nav ul {
         flex-wrap: wrap;
         margin: 0;
     }
@@ -324,33 +320,6 @@ footer {
     }
 
     section {
-        width: 100%;
-    }
-
-    .about-website {
-        margin: 25px 0;
-    }
-
-    /* Seriály */
-    .serials-list {
-        margin: 25px 0;
-    }
-
-    /* Autoři */
-    .authors-list {
-        margin: 25px 0;
-    }
-    /* Uživatelský profil */
-    .user-profile {
-        margin: 25px 0;
-    }
-    /* Statistiky */
-    .statistics {
-        margin: 25px 0;
-    }
-
-    /* Hodnocení */
-    .rating {
         margin: 25px 0;
     }
 
