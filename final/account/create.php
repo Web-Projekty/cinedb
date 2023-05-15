@@ -1,3 +1,4 @@
+<?php include "session_start.php"; ?>
 <!DOCTYPE html>
 <html lang="cs">
 
@@ -66,16 +67,24 @@
                 if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
                 }
+                $sql = "SELECT COUNT(uid) AS 'count' FROM users WHERE username = $user";
+                $result = $conn->query($sql);
+                $row = mysqli_fetch_assoc($result);
+                if ($row['count'] == 0) {
+                    $sql = "INSERT INTO users (username, password) VALUES ('$user', '$pass')";
+                    if ($conn->query($sql) === TRUE) {
+                        echo "Registrace proběhla úspěšně!";
+                        $_SESSION['login_msg'] = "Registrace proběhla úspěšně! Prosíme přihlašte se.";
+                        header("Location: log_in.php");
+                    } else {
+                        echo "Chyba: " . $sql . "<br>" . $conn->error;
+                    }
 
-                $sql = "INSERT INTO users (username, password) VALUES ('$user', '$pass')";
-
-                if ($conn->query($sql) === TRUE) {
-                    echo "Registrace proběhla úspěšně!";
-                } else {
-                    echo "Chyba: " . $sql . "<br>" . $conn->error;
+                    $conn->close();
                 }
-
-                $conn->close();
+                else{
+                    echo "Účet s zadaným uživatelským jménem již existuje.";
+                }
             } else {
                 echo "Musíte vyplnit registrační pole!";
             }
