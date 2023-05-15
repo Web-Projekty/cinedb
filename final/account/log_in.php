@@ -82,6 +82,9 @@
                     $_SESSION['profileId'] = $row['profileId'];
                     $_SESSION['time'] = time();
                 }
+                else{
+                    echo "<a style='color: red;'>Špatně zadané heslo, nebo uživatelské jméno.</a>";
+                }
                 $conn->close();
             }
             if ($_SESSION['user'] == true) {

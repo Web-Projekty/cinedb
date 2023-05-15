@@ -90,9 +90,11 @@ include "../account/timed_log_out.php";
                                 $file = fopen($filename, "a");
 
                                 if (filesize($filename) == 0) { //je potřeba odřádkovat??
-                                    $write = $_POST['review'] . "|" . $_POST['star'] . "|" . $_SESSION['username'];
+                                    //zápis s odřádkováním
+                                    $write = $_POST['review'] . "|" . $_POST['star'] . "|" . date("H:i") . "|" . $_SESSION['username'];
                                 } else {
-                                    $write = "\n" . $_POST['review'] . "|" . $_POST['star'];
+                                    //zápis bez odřádkování
+                                    $write = "\n" . $_POST['review'] . "|" . $_POST['star'] . "|" . date("H:i") . "|" . $_SESSION['username'];
                                 }
                                 fwrite($file, $write);
                                 echo "vaše hodnocení bylo úspěšně zaznamenáno";
@@ -103,7 +105,7 @@ include "../account/timed_log_out.php";
                         fclose($file);
                     }
                 } else {
-                    echo "prosím přihlaš se než ohodnotíš stánku";
+                    echo "Prosím přihlaš se než ohodnotíš stánku.<br>";
                 }
                 //výpis hodnocení
                 if (filesize($filename) != 0) {
@@ -141,15 +143,18 @@ include "../account/timed_log_out.php";
                         $sum += $values[1];
                         $counter += 1;
                         echo "</td>
-              </tr>";
+                        <td>$values[2]</td>
+                        <td>$values[3]</td>
+                        </tr>";
                     }
                     echo "<tr>
-    <th>Průměrné hodnocení</th>
-      <td>";
+                            <th>Průměrné hodnocení: </th>
+                            <td>";
                     echo round($sum / $counter, 2);
-                    echo "</td>
-</tr>
-</table>";
+                    echo "
+                            </td>
+                        </tr>
+                    </table>";
                 }
                 ?>
         </section>
