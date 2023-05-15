@@ -59,7 +59,10 @@ include "../account/timed_log_out.php"; ?>
         <section class="serials-list">
             <form action="" method="POST">
                 <?php
-                    $serialyH = $_POST["serialyH"]; //zapamatování inputu
+                    $serialyH = "";
+                    if(isset($_POST["serialyH"])){
+                        $serialyH = $_POST["serialyH"];
+                    }
                 ?>
                 <input type="text" name="serialyH" value="<?php echo $serialyH ?>">
                 <input type="submit" value="vyhledat" name="vyhledat">
@@ -84,7 +87,7 @@ include "../account/timed_log_out.php"; ?>
                 <?php
                 $servername = "localhost:3306";
                 $username = "cineDB";
-                $password = "#BDenic2305";
+                $password = "BDenic2305";
                 $dbname = "serialy";
 
                 // Create connection
