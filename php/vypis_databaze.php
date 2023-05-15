@@ -28,7 +28,10 @@
     <h2>hledací funkce</h2>
     <form action="" method="POST">
         <?php
-            $serialyH = $_POST["serialyH"];
+            $serialyH = "";
+            if(isset($_POST["serialyH"])){
+                $serialyH = $_POST["serialyH"];
+            }
         ?>
         <input type="text" name="serialyH" value="<?php echo $serialyH ?>">
         <input type="submit" value="vyhledat" name="vyhledat">
