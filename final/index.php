@@ -18,7 +18,6 @@
 </head>
 
 <body>
-
     <div class="flex-box">
         <header>
             <div class="header-title">
