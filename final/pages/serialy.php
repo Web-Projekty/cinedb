@@ -71,7 +71,7 @@ include "../account/timed_log_out.php"; ?>
                     <th>detaily</th>
                 </tr>
                 <?php
-                $servername = "localhost3306";
+                $servername = "localhost:3306";
                 $username = "cineDB";
                 $password = "#BDenic2305";
                 $dbname = "serialy";
