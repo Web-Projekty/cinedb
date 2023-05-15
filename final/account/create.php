@@ -80,7 +80,7 @@
 
                 $conn->close();
             } else {
-                echo "<p>Musíte vyplnit registrační pole!</p>";
+                echo "Musíte vyplnit registrační pole!";
             }
             ?>
             <div class="login">

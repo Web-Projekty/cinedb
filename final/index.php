@@ -1,11 +1,12 @@
-<?php include "account/session_start.php";
+<?php 
+    include "account/session_start.php";
     $_SESSION['page'] = 1;
-    include "account/timed_log_out.php"; ?>
+    include "account/timed_log_out.php"; 
+?>
 <!DOCTYPE html>
 <html lang="cs">
 
 <head>
-    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +14,11 @@
     <meta name="keywords" content="databáze seriálů, hodnocení seriálů">
 
     <title>CineDB - Databáze seriálů</title>
+
+    <link rel="shortcut icon" href="img/logo/logo_icon_exp.png" type="image/x-icon">
+
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/uvod.css">
 </head>
 
 <body>
@@ -24,8 +28,8 @@
                 <img src="img/logo/logo_exp_wStroke.png" alt="logo">
             </div>
 
-            <nav class="header-nav">
-                <ul>
+            <nav>
+                <ul class="header-nav">
                     <li><a href="index.php" id="selected">Úvod</a></li>
                     <li><a href="pages/serialy.php">Seriály</a></li>
                     <li><a href="pages/autori.php">Autoři</a></li>
