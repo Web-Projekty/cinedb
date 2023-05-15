@@ -1,4 +1,4 @@
-<?php include "session_start.php" ?>
+<?php include "session_start.php"; ?>
 <!DOCTYPE html>
 <html lang="cs">
 
@@ -84,11 +84,22 @@
                 }
                 $conn->close();
             }
-            ?>
-            <div class="register">
+            if ($_SESSION['user'] == true) {
+                //přesměrování na úvodní stránku
+                header("Location: ../index.php");
+            }
+            if (!empty($_SESSION['login_msg'])) {
+                echo $_SESSION['login_msg'];
+                unset($_SESSION['login_msg']);
+            } else {
+                echo "<div class='register'>
                 <p>Ještě nemáte účet?</p>
-                <a href="create.php"><button>Registrovat se</button></a>
-            </div>
+                <a href='create.php'><button>Registrovat se</button></a>
+            </div>";
+            }
+            ?>
+
+
 
         </section>
 
