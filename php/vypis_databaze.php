@@ -63,11 +63,15 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $radic = $_POST["radic"];
         $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy";
         if(isset($_POST['vyhledat'])){
             $serialyH = $_POST["serialyH"];
-            $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy WHERE serialy.nazev LIKE '%$serialyH%'"; 
+            $sql .= " WHERE serialy.nazev LIKE '%$serialyH%'"; 
+        }
+        if(isset($_POST['vyhledat']) && isset($_POST['radic'])){
+            $radic = $_POST["radic"];
+            $serialyH = $_POST["serialyH"];
+            $sql .= " ORDER BY $radic"; 
         }
         if(isset($_POST["radit"])){
             $radic = $_POST["radic"];
