@@ -63,15 +63,19 @@ include "../account/timed_log_out.php"; ?>
                     if(isset($_POST["serialyH"])){
                         $serialyH = $_POST["serialyH"];
                     }
+                    $radic = "";
+                    if(isset($_POST["radic"])){
+                        $radic = $_POST["radic"];
+                    }
                 ?>
                 <input type="text" name="serialyH" value="<?php echo $serialyH ?>">
                 <input type="submit" value="vyhledat" name="vyhledat">
 
                 <select name="radic">
-                    <option value="serialy.nazev ASC">od A-Z</option>
-                    <option value="serialy.nazev DESC">od Z-A</option>
-                    <option value="serialy.idS ASC">podle ID</option>
-                    <option value="serialy.idA ASC">podle autora</option>
+                    <option value="serialy.nazev ASC" <?php if($radic == "serialy.nazev ASC") echo "selected" ?>>od A-Z</option>
+                    <option value="serialy.nazev DESC" <?php if($radic == "serialy.nazev DESC") echo "selected" ?>>od Z-A</option>
+                    <option value="serialy.idS ASC" <?php if($radic == "serialy.idS ASC") echo "selected" ?>>podle ID</option>
+                    <option value="serialy.idA ASC" <?php if($radic == "serialy.idA ASC") echo "selected" ?>>podle autora</option>
                 </select>
                 <input type="submit" value="řadit" name="radit">
             </form>
