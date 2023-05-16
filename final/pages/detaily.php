@@ -26,6 +26,7 @@ include "../account/timed_log_out.php"; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detaily</title>
 </head>
+
 <?php
 //Nelze otevřít v případě, že je otevřený přímo
 include "../db/active_db.php";
@@ -57,7 +58,12 @@ if ($result->num_rows > 0) {
             <th>zpět</th>
         </tr>
 
-        <body>
+<body>    
+    <form action="" method="POST">
+        <textarea name="recenze" id="recenze" cols="80" rows="5"></textarea>
+        <input type="submit" value="odeslat recenzi" name="odeslat">
+
+    </form>
         <?php
         $sql = "SELECT hodnota from hodnoceni WHERE idS = '$idS'";
         $rating_result = $conn->query($sql);
@@ -87,8 +93,8 @@ if ($result->num_rows > 0) {
             </tr>";
         }
         $conn->close();
-}
+        }
         ?>
-        </body>
+</body>
 
 </html>
