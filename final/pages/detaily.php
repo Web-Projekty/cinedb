@@ -39,7 +39,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT serialy.idS, serialy.nazev, serialy.idA, autori.jmeno, autori.prijmeni, type from serialy inner join autori on idS = idS WHERE idS = $idS";
+$sql = "SELECT serialy.idS, serialy.nazev, serialy.idA, autori.jmeno, autori.prijmeni, type from serialy inner join autori on serialy.idA = autori.idA WHERE idS = $idS";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc(); ?>
