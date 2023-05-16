@@ -4,14 +4,17 @@
     padding: 40px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1440px) {
     .serials {
-        margin: 0;
+        width: 50%;
+        margin: 25px 0 25px 0;
     }
 }
 
-@media screen and (max-width: 1440px) {
+
+@media screen and (max-width: 768px) {
     .serials {
-        margin: 0;
+        width: 100%;
+        margin: 25px 0 25px 0;
     }
 }

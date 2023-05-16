@@ -307,47 +307,6 @@ footer {
     RESPONSIVITY 
 */
 
-@media screen and (max-width: 768px) {
-
-    header {
-        flex-direction: column;
-        margin: 0 0 0 0;
-        width: 100%;
-    }
-
-    .header-nav {
-        flex-wrap: wrap;
-        margin: 0;
-    }
-
-    .header-nav li:hover {
-        transform: none;
-    }
-
-    .header-login {
-        margin-top: 25px;
-    }
-
-    section {
-        margin: 0;
-        width: 100%;
-    }
-
-    footer {
-        position: relative;
-        margin: 0;
-        width: 100%;
-        margin: 0 0 0 0;
-    }
-
-    .footer-text {
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        width: 100%;
-    }
-}
-
 @media screen and (max-width: 1440px) {
 
     header {
@@ -369,9 +328,40 @@ footer {
         margin-top: 25px;
     }
 
-    section {
+    footer {
+        position: relative;
         margin: 0;
         width: 100%;
+        margin: 0 0 0 0;
+    }
+
+    .footer-text {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        margin: 0 0 0 0;
+        width: 100%;
+    }
+
+    .header-nav {
+        flex-wrap: wrap;
+        margin: 0;
+    }
+
+    .header-nav li:hover {
+        transform: none;
+    }
+
+    .header-login {
+        margin-top: 25px;
     }
 
     footer {
@@ -388,3 +378,4 @@ footer {
         width: 100%;
     }
 }
+
