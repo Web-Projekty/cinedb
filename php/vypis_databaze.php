@@ -60,10 +60,10 @@
             <th>detaily</th>
         </tr>
         <?php
-        $servername = "127.0.0.1";
+        $servername = "localhost:3306";
         $username = "cineDB";
         $password = "#BDenic2305";
-        $dbname = "serialy";
+        $dbname = "cineDB";
 
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
