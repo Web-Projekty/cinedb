@@ -67,13 +67,14 @@
                 if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
                 }
-                $sql = "SELECT COUNT(uid) AS 'count' FROM users WHERE username = $user";
+                var_dump($user);
+                $sql = "SELECT CASE WHEN EXISTS (SELECT 1 FROM users WHERE username = '$user') THEN 1 ELSE 0 END AS user_exists;";
                 $result = $conn->query($sql);
                 $row = mysqli_fetch_assoc($result);
-                if ($row['count'] == 0) {
+                if ($row['user_exists'] == 0) {
                     $sql = "INSERT INTO users (username, password) VALUES ('$user', '$pass')";
                     if ($conn->query($sql) === TRUE) {
-                        echo "Registrace proběhla úspěšně!";
+                        echo "Registrace proběhla úspěšně!<br>";
                         $_SESSION['login_msg'] = "Registrace proběhla úspěšně! Prosíme přihlašte se.";
                         header("Location: log_in.php");
                     } else {
@@ -81,8 +82,7 @@
                     }
 
                     $conn->close();
-                }
-                else{
+                } else {
                     echo "Účet s zadaným uživatelským jménem již existuje.";
                 }
             } else {
