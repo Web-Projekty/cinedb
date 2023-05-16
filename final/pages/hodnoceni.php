@@ -62,7 +62,7 @@ include "../account/timed_log_out.php";
                     if (isset($star)) {
                         $star = $_POST['star'];
                     }
-                    echo "
+                    echo "<div class='stars'>
                 <input type='radio' name='star' class='hidden' value='0' checked>
                 <label><input type='radio' name='star' class='hidden' value='1'>
                     <a class='star_on' onclick='star(1)' id='star_1'>★</a> </label>
@@ -73,12 +73,13 @@ include "../account/timed_log_out.php";
                 <label><input type='radio' name='star' class='hidden' value='4'>
                     <a class='star_off' onclick='star(4)' id='star_4'>★</a> </label>
                 <label><input type='radio' name='star' class='hidden' value='5'>
-                    <a class='star_off' onclick='star(5)' id='star_5'>★</a> </label>";
+                    <a class='star_off' onclick='star(5)' id='star_5'>★</a> </label>
+                    </div>";
                     if (isset($star) && empty($star)) {
-                        echo "<a style='color:red;'>Toto pole je povinné</a>";
+                        echo "<a style='color:red;'>Toto pole je povinné!</a>";
                     }
                     echo "
-                <button type='submit' name='submit' value='1'>odeslat recenzi</button>
+                <button type='submit' name='submit' value='1'>Odeslat recenzi</button>
             </form>";
 
                     //zápis do souboru
