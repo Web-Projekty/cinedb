@@ -39,7 +39,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT idS, nazev, idA, type from serialy WHERE idS = $idS";
+$sql = "SELECT serialy.idS, serialy.nazev, serialy.idA, autori.jmeno, autori.prijmeni, type from serialy inner join autori on idS = idS WHERE idS = $idS";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc(); ?>
@@ -77,13 +77,15 @@ if ($result->num_rows > 0) {
                 "<td>" . $row['idS'] . "</td>
             <td>" . $row['nazev'] . "</td>
             <td>" . $row['idA'] . "</td>
+            <td>" . $row['jmeno'] . "</td>
+            <td>" . $row['prijmeni'] . "</td>
             <td>" . $ratingAVG . "</td>
             <td>" . $row['type'] . "</td>
             <td><a href='serialy.php'>odkaz</a>
             </tr>";
         }
         $conn->close();
-    }
+}
         ?>
         </body>
 
