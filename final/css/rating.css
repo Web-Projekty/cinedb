@@ -22,3 +22,19 @@
    -webkit-text-stroke-color: black;
    transition: 200ms;
 }
+
+@media screen and (max-width: 1440px) {
+   .rating {
+       width: 50%;
+       margin: 25px 0 25px 0;
+   }
+}
+
+
+@media screen and (max-width: 768px) {
+   .rating {
+       width: 100%;
+       margin: 25px 0 25px 0;
+
+   }
+}

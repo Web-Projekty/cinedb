@@ -45,14 +45,18 @@ input {
     padding: 5px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1440px) {
     .register {
-        margin: 0;
+        width: 50%;
+        margin: 25px 0 25px 0;
     }
 }
 
-@media screen and (max-width: 1440px) {
+
+@media screen and (max-width: 768px) {
     .register {
-        margin: 0;
+        width: 80%;
+        margin: 25px 0 25px 0;
+
     }
 }
