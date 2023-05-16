@@ -59,7 +59,7 @@ include "../account/timed_log_out.php"; ?>
 
                 <select name="radic">
                     <option value="autori.jmeno ASC" <?php if($radic == "autori.jmeno ASC") echo "selected" ?>>podle jména</option>
-                    <option value="autori.prijmeni DESC" <?php if($radic == "autori.prijmeni DESC") echo "selected" ?>>podle přijmení</option>
+                    <option value="autori.prijmeni ASC" <?php if($radic == "autori.prijmeni ASC") echo "selected" ?>>podle přijmení</option>
                     <option value="autori.idA ASC" <?php if($radic == "autori.idA ASC") echo "selected" ?>>podle ID</option>
                 </select>
                 <input type="submit" value="řadit" name="radit">
@@ -70,7 +70,6 @@ include "../account/timed_log_out.php"; ?>
                     <th>ID Autora</th>
                     <th>Jméno</th>
                     <th>Příjmení</th>
-                    <th>Detaily</th>
                 </tr>
                 <?php
                 include "../db/active_db.php";
@@ -101,7 +100,6 @@ include "../account/timed_log_out.php"; ?>
                         <td>" . $row['idA'] . "</td>
                         <td>" . $row['jmeno'] . "</td>
                         <td>" . $row['prijmeni'] . "</td>
-                        <td><a href='detaily.php?idA=$idA'>odkaz</a>
                         </tr>";
                     }
                     $conn->close();
