@@ -43,7 +43,71 @@ include "../account/timed_log_out.php"; ?>
         </header>
 
         <section class="authors">
-            <!-- <?php ?> -->
+            <form action="" method="POST">
+                <?php
+                    $autoriH = "";
+                    if(isset($_POST["autoriH"])){
+                        $autoriH = $_POST["autoriH"];
+                    }
+                    $radic = "";
+                    if(isset($_POST["radic"])){
+                        $radic = $_POST["radic"];
+                    }
+                ?>
+                <input type="text" name="autoriH" value="<?php echo $autoriH ?>">
+                <input type="submit" value="vyhledat" name="vyhledat">
+
+                <select name="radic">
+                    <option value="autori.jmeno ASC" <?php if($radic == "autori.jmeno ASC") echo "selected" ?>>podle jména</option>
+                    <option value="autori.prijmeni DESC" <?php if($radic == "autori.prijmeni DESC") echo "selected" ?>>podle přijmení</option>
+                    <option value="autori.idA ASC" <?php if($radic == "autori.idA ASC") echo "selected" ?>>podle ID</option>
+                </select>
+                <input type="submit" value="řadit" name="radit">
+            </form>
+            
+            <table>
+                <tr>
+                    <th>ID Autora</th>
+                    <th>Jméno</th>
+                    <th>Příjmení</th>
+                    <th>Detaily</th>
+                </tr>
+                <?php
+                include "../db/active_db.php";
+
+                // Create connection
+                $conn = new mysqli($servername, $username, $password, $dbname);
+
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                $sql = "SELECT autori.idA, autori.jmeno, autori.prijmeni from autori";
+                if(isset($_POST['vyhledat'])){
+                    $autoriH = $_POST["autoriH"];
+                    $sql .= " WHERE autori.jmeno LIKE '%$autoriH%'";
+                }
+                if(isset($_POST["radit"])){
+                    $radic = $_POST["radic"];
+                    $autoriH = $_POST["autoriH"];
+                    $sql = "SELECT autori.idA, autori.jmeno, autori.prijmeni from autori WHERE autori.jmeno LIKE '%$autoriH%' ORDER BY $radic";
+                }
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $idA = $row['idA'];
+                        echo "<tr>
+                        <td>" . $row['idA'] . "</td>
+                        <td>" . $row['jmeno'] . "</td>
+                        <td>" . $row['prijmeni'] . "</td>
+                        <td><a href='detaily.php?idA=$idA'>odkaz</a>
+                        </tr>";
+                    }
+                    $conn->close();
+                }
+            ?>
+            </table>
         </section>
 
         <?php include "../include/footer.php" ?>
