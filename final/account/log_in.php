@@ -82,8 +82,7 @@
                     $_SESSION['uid'] = $row['uid'];
                     $_SESSION['profileId'] = $row['profileId'];
                     $_SESSION['time'] = time();
-                }
-                else{
+                } else {
                     echo "<a style='color: red;'>Špatně zadané heslo, nebo uživatelské jméno.</a>";
                 }
                 $conn->close();
@@ -96,11 +95,14 @@
                 echo $_SESSION['login_msg'];
                 unset($_SESSION['login_msg']);
             }
-            ?>
+            //výpis hlášky "Ještě nemáte účet? se nezobrazí po registraci nového účtu."
+            echo "
             <div class='register'>
                 <p>Ještě nemáte účet?</p>
                 <a href='create.php'><button>Registrovat se</button></a>
-            </div>
+            </div>";
+            ?>
+
         </section>
 
         <?php include "../include/footer.php" ?>
