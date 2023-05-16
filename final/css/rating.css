@@ -1,6 +1,13 @@
 .rating {
    display: flex;
+   text-align: center;
    flex-direction: column;
+}
+
+form {
+   display: flex;
+   flex-direction: column;
+   margin: 10px;
 }
 
 .hidden {
@@ -23,6 +30,19 @@
    transition: 200ms;
 }
 
+table {
+   border: 1px solid whitesmoke;
+   border-radius: 12px;
+
+   margin-top: 25px;
+}
+
+table td,
+tr,
+th {
+   border: 1px transparent whitesmoke;
+}
+
 @media screen and (max-width: 1440px) {
    .rating {
        width: 50%;
@@ -35,6 +55,5 @@
    .rating {
        width: 100%;
        margin: 25px 0 25px 0;
-
    }
 }
