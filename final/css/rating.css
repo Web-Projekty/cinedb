@@ -10,6 +10,10 @@ form {
    margin: 10px;
 }
 
+.stars {
+   flex-direction: row;
+}
+
 .hidden {
    opacity: 0;
    width: 0;

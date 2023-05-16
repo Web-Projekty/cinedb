@@ -42,5 +42,6 @@ select {
     .serials {
         width: 100%;
         margin: 25px 0 25px 0;
+        padding: 10px;
     }
 }
