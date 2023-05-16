@@ -20,6 +20,8 @@ button {
     padding: 3px 5px;
 
     border-radius: 12px;
+
+    cursor: pointer;
 }
 
 .login {
@@ -41,10 +43,6 @@ input {
     border: 1px solid whitesmoke;
     border-radius: 12px;
     padding: 5px;
-}
-
-a {
-    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
