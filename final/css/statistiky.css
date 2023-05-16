@@ -5,18 +5,30 @@
 }
 
 table {
-    border: 1px solid black;
-    border-collapse: collapse;
+    border: 1px solid whitesmoke;
+    border-radius: 12px;
+
+    margin-top: 25px;
 }
 
 table td,
 tr,
 th {
-    border: 1px solid black;
+    border: 1px transparent whitesmoke;
 }
 
 img {
     width: 100px;
+}
+
+input {
+    border-radius: 12px;
+    padding: 5px;
+}
+
+select {
+    border-radius: 12px;
+    padding: 5px;
 }
 
 @media screen and (max-width: 1440px) {
