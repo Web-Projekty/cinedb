@@ -68,7 +68,6 @@ include "../account/timed_log_out.php"; ?>
                     <th>Obrázek</th>
                     <th>ID</th>
                     <th>Název</th>
-                    <th>ID Autora</th>
                     <th>Hodnocení</th>
                     <th>Detaily</th>
                 </tr>
@@ -83,7 +82,7 @@ include "../account/timed_log_out.php"; ?>
                     die("Connection failed: " . $conn->connect_error);
                 }
 
-                $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy";
+                $sql = "SELECT serialy.idS, serialy.nazev from serialy";
                 if(isset($_POST['vyhledat'])){
                     $serialyH = $_POST["serialyH"];
                     $sql .= " WHERE serialy.nazev LIKE '%$serialyH%'";
@@ -91,7 +90,7 @@ include "../account/timed_log_out.php"; ?>
                 if(isset($_POST["radit"])){
                     $radic = $_POST["radic"];
                     $serialyH = $_POST["serialyH"];
-                    $sql = "SELECT serialy.idS, serialy.nazev, serialy.idA from serialy WHERE serialy.nazev LIKE '%$serialyH%' ORDER BY $radic";
+                    $sql = "SELECT serialy.idS, serialy.nazev from serialy WHERE serialy.nazev LIKE '%$serialyH%' ORDER BY $radic";
                 }
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
@@ -111,13 +110,12 @@ include "../account/timed_log_out.php"; ?>
                             $ratingAVG = $total / $counter;
                         }
                         echo "<tr>
-            <td><img src='../img/db/$idS.jpg'></td>" .
+                            <td><img src='../img/db/$idS.jpg'></td>" .
                             "<td>" . $row['idS'] . "</td>
-            <td>" . $row['nazev'] . "</td>
-            <td>" . $row['idA'] . "</td>
-            <td>" . $ratingAVG . "</td>
-            <td><a href='detaily.php?idS=$idS'>podrobnosti</a>
-            </tr>";
+                            <td>" . $row['nazev'] . "</td>
+                            <td>" . $ratingAVG . "</td>
+                            <td><a href='detaily.php?idS=$idS'>podrobnosti</a>
+                            </tr>";
                     }
                     $conn->close();
                 }

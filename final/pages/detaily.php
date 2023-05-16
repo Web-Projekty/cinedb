@@ -47,9 +47,11 @@ if ($result->num_rows > 0) {
     <table>
         <tr>
             <th>Obrázek</th>
-            <th>id</th>
+            <th>ID</th>
             <th>Název</th>
-            <th>id Autora</th>
+            <th>ID Autora</th>
+            <th>Jméno autora</th>
+            <th>Příjmení autora</th>
             <th>hodnocení</th>
             <th>typ</th>
             <th>zpět</th>
@@ -81,7 +83,7 @@ if ($result->num_rows > 0) {
             <td>" . $row['prijmeni'] . "</td>
             <td>" . $ratingAVG . "</td>
             <td>" . $row['type'] . "</td>
-            <td><a href='serialy.php'>odkaz</a>
+            <td><a href='serialy.php'>zpět</a>
             </tr>";
         }
         $conn->close();
