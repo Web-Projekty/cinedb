@@ -94,16 +94,12 @@
             if (!empty($_SESSION['login_msg'])) {
                 echo $_SESSION['login_msg'];
                 unset($_SESSION['login_msg']);
-            } else {
-                echo "<div class='register'>
-                <p>Ještě nemáte účet?</p>
-                <a href='create.php'><button>Registrovat se</button></a>
-            </div>";
             }
             ?>
-
-
-
+            <div class='register'>
+                <p>Ještě nemáte účet?</p>
+                <a href='create.php'><button>Registrovat se</button></a>
+            </div>
         </section>
 
         <?php include "../include/footer.php" ?>

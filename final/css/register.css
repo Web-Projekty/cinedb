@@ -43,6 +43,10 @@ input {
     padding: 5px;
 }
 
+a {
+    cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
     .register {
         margin: 0;
