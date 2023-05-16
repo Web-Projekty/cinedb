@@ -12,22 +12,6 @@ include "../account/timed_log_out.php"; ?>
     <title>CineDB - Seriály</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/serialy.css">
-    <style>
-        table {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-
-        table td,
-        tr,
-        th {
-            border: 1px solid black;
-        }
-
-        img {
-            width: 100px;
-        }
-    </style>
 </head>
 
 <body>
@@ -82,11 +66,11 @@ include "../account/timed_log_out.php"; ?>
             <table>
                 <tr>
                     <th>Obrázek</th>
-                    <th>id</th>
+                    <th>ID</th>
                     <th>Název</th>
-                    <th>id Autora</th>
-                    <th>hodnocení</th>
-                    <th>detaily</th>
+                    <th>ID Autora</th>
+                    <th>Hodnocení</th>
+                    <th>Detaily</th>
                 </tr>
                 <?php
                 include "../db/active_db.php";
