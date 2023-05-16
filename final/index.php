@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Pták, Vlček, Rehák">
     <meta name="keywords" content="databáze seriálů, hodnocení seriálů">
+    <meta name="description" conntent="Databáze dostupných seriálů a filmů. Podle hodnocení se můžete zvážit zda seriál či film stojí za váš čas a pozornost.">
 
     <title>CineDB - Databáze seriálů</title>
 
