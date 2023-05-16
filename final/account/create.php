@@ -44,12 +44,12 @@
             <form method="get">
                 <div class="un">
                     <label for="usern">Uživatelské jméno</label>
-                    <input type="text" id="usern" name="username" placeholder="Jméno">
+                    <input type="text" id="usern" name="username" placeholder="Zadejte jméno">
                 </div>
 
                 <div class="pw">
                     <label for="passw">Heslo</label>
-                    <input type="password" id="usern" name="password" placeholder="Heslo">
+                    <input type="password" id="usern" name="password" placeholder="Zadejte heslo">
                 </div>
 
                 <button type="submit">Registrovat</button>
