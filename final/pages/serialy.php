@@ -116,7 +116,7 @@ include "../account/timed_log_out.php"; ?>
             <td>" . $row['nazev'] . "</td>
             <td>" . $row['idA'] . "</td>
             <td>" . $ratingAVG . "</td>
-            <td><a href='detaily.php?idS=$idS'>odkaz</a>
+            <td><a href='detaily.php?idS=$idS'>podrobnosti</a>
             </tr>";
                     }
                     $conn->close();
