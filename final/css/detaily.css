@@ -34,6 +34,26 @@ table {
     border-radius: 12px;
 }
 
+.hidden {
+   opacity: 0;
+   width: 0;
+   height: 0;
+}
+
+.star_off {
+   color: black;
+   -webkit-text-stroke: 1px;
+   -webkit-text-stroke-color: black;
+   -webkit-text-fill-color: white;
+}
+
+.star_on {
+   color: yellow;
+   -webkit-text-stroke: 1px;
+   -webkit-text-stroke-color: black;
+   transition: 200ms;
+}
+
 table td,
 tr,
 th {
@@ -47,3 +67,11 @@ img {
 footer {
     position: fixed;
 }
+<<<<<<< Updated upstream
+=======
+
+.detail {
+    margin: 50px 0;
+}
+
+>>>>>>> Stashed changes

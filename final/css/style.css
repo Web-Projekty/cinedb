@@ -14,6 +14,7 @@
 
     --scroll-bar: #20294d;
     --scroll-bar-hover: #2d365b;
+    --scroll-bar-background-color: var(--theme-text-background-color);
 }
 
 * {
@@ -293,11 +294,11 @@ footer {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--scroll-bar);
+    background: var(--scroll-bar-background-color);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--theme-text-background-color);
+    background: var(--scroll-bar);
 }
 
 ::-webkit-scrollbar-thumb:hover {
