@@ -56,7 +56,9 @@ include "../account/timed_log_out.php";
                 die("Connection failed: " . $conn->connect_error);
             }
             
-            $idS = $_GET['idS'];
+            if($_GET['idS']){
+                $idS = $_GET['idS'];
+            }
             $sql = "SELECT serialy.idS, serialy.nazev, autori.jmeno, autori.prijmeni, type from serialy inner join autori on serialy.idA = autori.idA WHERE idS = $idS";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
@@ -127,11 +129,11 @@ include "../account/timed_log_out.php";
             <button type='submit' name='submit' value='1'>Odeslat recenzi</button>
             </form>";
             }
-            
-            if (!empty($_POST['star']) && isset($_POST['star']) && $_POST['star'] != 0) {
+
+            if (!empty($_POST['star']) && isset($_POST['star']) && $_POST['star'] != 0 && $_SESSION['user'] == true) {
                 if (!empty($_POST['submit']) && $_POST['submit'] = 1) {
                     //zápis
-                    $idS = $_POST["idS"];
+                    $idS = $_GET["idS"];
                     $uzivatel = $_SESSION['username'];
                     $hodnota = $_POST["star"];
                     $sql = "INSERT INTO hodnoceni (idS, uzivatel, hodnota)
@@ -144,6 +146,7 @@ include "../account/timed_log_out.php";
                 echo "Prosím přihlaš se než ohodnotíš tento seriál/film.<br>";
             }
             //výpis hodnocení
+            echo "<h3>recenze</h3>";
             $sql = "SELECT idH, uzivatel, hodnota from hodnoceni where idS = $idS";
             $result = $conn->query($sql);
             if ($result->num_rows > 0){
