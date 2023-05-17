@@ -107,7 +107,7 @@ include "../account/timed_log_out.php"; ?>
                         if ($counter < 1) {
                             $ratingAVG = "žádné recenze";
                         } else {
-                            $ratingAVG = $total / $counter;
+                             $ratingAVG = round($total / $counter,2);
                         }
                         echo "<tr>
                             <td><img src='../img/db/$idS.jpg'></td>" .
