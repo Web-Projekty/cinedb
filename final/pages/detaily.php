@@ -65,7 +65,7 @@ include "../account/timed_log_out.php";
                 $row = $result->fetch_assoc();
             ?>
             <h2><?php echo $row['nazev']; ?></h2>
-            <table class="detail">
+            <table>
                 <tr>
                     <th>Obrázek</th>
                     <th>ID</th>
@@ -128,40 +128,39 @@ include "../account/timed_log_out.php";
                 echo "
             <input type='submit' name='submit' value='Odeslat recenzi'>
             </form>";
-            }
+        } else {
+            echo "Prosím přihlaš se než ohodnotíš tento seriál/film.<br>";
+        }
 
-            if (!empty($_POST['star']) && isset($_POST['star']) && $_POST['star'] != 0 && $_SESSION['user'] == true) {
-                if (isset($_POST['submit'])) {
-                    //zápis
-                    $idS = $_GET["idS"];
-                    $uzivatel = $_SESSION['username'];
-                    $hodnota = $_POST["star"];
-                    $sql = "INSERT INTO hodnoceni (idS, uzivatel, hodnota)
-                    VALUES ('$idS', '$uzivatel', '$hodnota')";
-                    echo "vaše hodnocení bylo úspěšně zaznamenáno";
-                } else {
-                    echo "<p><a style='font-weight: bold;'>File error: </a>204</p>";
-                }
-            } else {
-                echo "Prosím přihlaš se než ohodnotíš tento seriál/film.<br>";
+        //výpis hodnocení
+        echo "<h3>recenze</h3>";
+        $sql = "SELECT idH, uzivatel, hodnota from hodnoceni where idS = $idS";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0){
+            echo "<table><tr><td>ID</td><td>uživatel</td><td>hodnocení</td></tr>";
+            while($row = $result->fetch_assoc()) {
+              echo "<tr><td>" . $row["idH"]. "</td><td>" . $row["uzivatel"]. "</td><td>" . $row["hodnota"]. "</td></tr>";
             }
-            //výpis hodnocení
-            echo "<h3>recenze</h3>";
-            $sql = "SELECT idH, uzivatel, hodnota from hodnoceni where idS = $idS";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0){
-                echo "<table><tr><td>ID</td><td>Uživatel</td><td>Hodnocení</td></tr>";
-                while($row = $result->fetch_assoc()) {
-                  echo "<tr><td>" . $row["idH"]. "</td><td>" . $row["uzivatel"]. "</td><td>" . $row["hodnota"]. "</td></tr>";
-                }
-                echo "</table>";
-                
-              } else {
-                echo "0 results";
-              }
-            
+            echo "</table>";
+            } else {
+                echo "nebyly přidány žádné recenze";
+            }
             $conn->close();
-            ?>
+            
+        //zápis
+            if (isset($_POST['submit'])){
+                $idS = $_GET['idS'];
+                $uzivatel = $_SESSION['username'];
+                $hodnota = $_POST['star'];
+
+                //nefunguje
+                $sql = "INSERT INTO hodnoceni (idS, uzivatel, hodnota)
+                VALUES ('$idS','$uzivatel','$hodnota')";
+                echo "zápis proběhl";
+                // update pokud znovu zmáčknu tlačítko
+                echo "bruh, jsem to nestihl";
+            }
+        ?>
         </section>
         
         <?php include "../include/footer.php" ?>
