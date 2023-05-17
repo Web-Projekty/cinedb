@@ -127,7 +127,6 @@ include "../account/timed_log_out.php";
                 }
                 echo "
             <input type='submit' name='submit' value='Odeslat recenzi'>
-            <input type='submit' name='aktualizovat' value='aktualizovat'>
             </form>";
             } else {
                 echo "Prosím přihlašte se, než ohodnotíte tento seriál/film.<br>";
@@ -153,7 +152,17 @@ include "../account/timed_log_out.php";
                 $uzivatel = $_SESSION['username'];
                 $hodnota = $_POST['star'];
 
-                $sql = "INSERT INTO hodnoceni (idS, uzivatel, hodnota)
+                $existujiciHodnoceni =  "SELECT * FROM hodnoceni WHERE idS = '$idS' AND uzivatel = '$uzivatel'";
+                if($existujiciHodnoceni > 0){
+                    $sql = "UPDATE hodnoceni SET hodnota = '$hodnota' WHERE idS = '$idS' AND uzivatel = '$uzivatel'";
+
+                    if ($conn->query($sql) === TRUE) {
+                        echo "Zápis proběhl úspěšně";
+                    } else {
+                        echo "Chyba při zápisu: " . $conn->error;
+                    }
+                } else {    
+                    $sql = "INSERT INTO hodnoceni (idS, uzivatel, hodnota)
                     VALUES ('$idS','$uzivatel','$hodnota')";
 
                     if ($conn->query($sql) === TRUE) {
@@ -162,21 +171,8 @@ include "../account/timed_log_out.php";
                         echo "Chyba při zápisu: " . $conn->error;
                     }
                 }
-                if (isset($_POST['aktualizovat'])){
-                    $idS = $_GET['idS'];
-                    $uzivatel = $_SESSION['username'];
-                    $hodnota = $_POST['star'];
-
-                    $A = "SELECT COUNT(uzivatel) from hodnoceni where '$idS' = idS AND '$uzivatel' = uzivatel";
-                    if($A > 0){
-                        $sql = "UPDATE hodnoceni SET hodnota = '$hodnota' WHERE idS = '$idS' AND uzivatel = '$uzivatel'";
-                        if ($conn->query($sql) === TRUE) {
-                            echo "aktualizace proběhla úspěšně";
-                        } else {
-                            echo "Chyba při zápisu: " . $conn->error;
-                        }
-                    }
-                }
+            }
+            
             $conn->close();
             ?>
         </section>
