@@ -87,7 +87,7 @@ include "../account/timed_log_out.php";
             if ($counter < 1) {
                 $ratingAVG = "žádné recenze";
             } else {
-                $ratingAVG = $total / $counter;
+                $ratingAVG = round($total / $counter,2);
             }
 
             if ($result->num_rows > 0) {
