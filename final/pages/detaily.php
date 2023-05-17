@@ -65,7 +65,7 @@ include "../account/timed_log_out.php";
                 $row = $result->fetch_assoc();
             ?>
             <h2><?php echo $row['nazev']; ?></h2>
-            <table>
+            <table class="detail">
                 <tr>
                     <th>Obrázek</th>
                     <th>ID</th>
