@@ -1,4 +1,6 @@
-<?php include "session_start.php"; ?>
+<?php include "session_start.php";
+$_SESSION['page'] = 5;
+?>
 <!DOCTYPE html>
 <html lang="cs">
 
@@ -89,7 +91,8 @@
             }
             if ($_SESSION['user'] == true) {
                 //přesměrování na úvodní stránku
-                header("Location: ../index.php");
+                $url = $_SESSION['url'];
+                header("Location: $url");
             }
             if (!empty($_SESSION['login_msg'])) {
                 echo $_SESSION['login_msg'];

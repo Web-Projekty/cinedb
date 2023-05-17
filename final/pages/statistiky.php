@@ -3,7 +3,8 @@
 
 <head>
     <?php include "../account/session_start.php";
-    $_SESSION['page'] = 2; ?>
+    $_SESSION['page'] = 2;
+    include "../account/timed_log_out.php"; ?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
