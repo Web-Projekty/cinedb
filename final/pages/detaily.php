@@ -50,13 +50,13 @@ include "../account/timed_log_out.php";
 
             // Create connection
             $conn = new mysqli($servername, $username, $password, $dbname);
-            
+
             // Check connection
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
-            
-            if($_GET['idS']){
+
+            if(isset($_GET['idS'])){
                 $idS = $_GET['idS'];
             }
             $sql = "SELECT serialy.idS, serialy.nazev, autori.jmeno, autori.prijmeni, type from serialy inner join autori on serialy.idA = autori.idA WHERE idS = $idS";
@@ -106,7 +106,7 @@ include "../account/timed_log_out.php";
             <form method="post">
             <?php
             if ($_SESSION['user'] == true) {
-                if (isset($star)) {
+                if (isset($_POST['star'])) {
                     $star = $_POST['star'];
                 }
                 echo "<div class='stars'>
@@ -127,42 +127,60 @@ include "../account/timed_log_out.php";
                 }
                 echo "
             <input type='submit' name='submit' value='Odeslat recenzi'>
+            <input type='submit' name='aktualizovat' value='aktualizovat'>
             </form>";
-        } else {
-            echo "Prosím přihlaš se než ohodnotíš tento seriál/film.<br>";
-        }
-
-        //výpis hodnocení
-        echo "<h3>recenze</h3>";
-        $sql = "SELECT idH, uzivatel, hodnota from hodnoceni where idS = $idS";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0){
-            echo "<table><tr><td>ID</td><td>uživatel</td><td>hodnocení</td></tr>";
-            while($row = $result->fetch_assoc()) {
-              echo "<tr><td>" . $row["idH"]. "</td><td>" . $row["uzivatel"]. "</td><td>" . $row["hodnota"]. "</td></tr>";
+            } else {
+                echo "Prosím přihlašte se, než ohodnotíte tento seriál/film.<br>";
             }
-            echo "</table>";
+
+            //výpis hodnocení
+            echo "<h3>recenze</h3>";
+            $sql = "SELECT idH, uzivatel, hodnota from hodnoceni where idS = $idS";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0){
+                echo "<table><tr><td>ID</td><td>uživatel</td><td>hodnocení</td></tr>";
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr><td>" . $row["idH"]. "</td><td>" . $row["uzivatel"]. "</td><td>" . $row["hodnota"]. "</td></tr>";
+                }
+                echo "</table>";
             } else {
                 echo "nebyly přidány žádné recenze";
             }
-            $conn->close();
-            
-        //zápis
+
+            //zápis
             if (isset($_POST['submit'])){
                 $idS = $_GET['idS'];
                 $uzivatel = $_SESSION['username'];
                 $hodnota = $_POST['star'];
 
-                //nefunguje
                 $sql = "INSERT INTO hodnoceni (idS, uzivatel, hodnota)
-                VALUES ('$idS','$uzivatel','$hodnota')";
-                echo "zápis proběhl";
-                // update pokud znovu zmáčknu tlačítko
-                echo "bruh, jsem to nestihl";
-            }
-        ?>
+                    VALUES ('$idS','$uzivatel','$hodnota')";
+
+                    if ($conn->query($sql) === TRUE) {
+                        echo "Zápis proběhl úspěšně";
+                    } else {
+                        echo "Chyba při zápisu: " . $conn->error;
+                    }
+                }
+                if (isset($_POST['aktualizovat'])){
+                    $idS = $_GET['idS'];
+                    $uzivatel = $_SESSION['username'];
+                    $hodnota = $_POST['star'];
+
+                    $A = "SELECT COUNT(uzivatel) from hodnoceni where '$idS' = idS AND '$uzivatel' = uzivatel";
+                    if($A > 0){
+                        $sql = "UPDATE hodnoceni SET hodnota = '$hodnota' WHERE idS = '$idS' AND uzivatel = '$uzivatel'";
+                        if ($conn->query($sql) === TRUE) {
+                            echo "aktualizace proběhla úspěšně";
+                        } else {
+                            echo "Chyba při zápisu: " . $conn->error;
+                        }
+                    }
+                }
+            $conn->close();
+            ?>
         </section>
-        
+
         <?php include "../include/footer.php" ?>
     </div>
 </body>
