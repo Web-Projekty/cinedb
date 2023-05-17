@@ -46,18 +46,17 @@ include "../account/timed_log_out.php";
 
         <section class="details">
             <?php
-            //Nelze otevřít v případě, že je otevřený přímo
             include "../db/active_db.php";
 
-             $idS = $_GET['idS'];
             // Create connection
             $conn = new mysqli($servername, $username, $password, $dbname);
-
+            
             // Check connection
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
-
+            
+            $idS = $_GET['idS'];
             $sql = "SELECT serialy.idS, serialy.nazev, autori.jmeno, autori.prijmeni, type from serialy inner join autori on serialy.idA = autori.idA WHERE idS = $idS";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
@@ -128,7 +127,7 @@ include "../account/timed_log_out.php";
             <button type='submit' name='submit' value='1'>Odeslat recenzi</button>
             </form>";
             }
-
+            
             if (!empty($_POST['star']) && isset($_POST['star']) && $_POST['star'] != 0) {
                 if (!empty($_POST['submit']) && $_POST['submit'] = 1) {
                     //zápis
@@ -145,6 +144,18 @@ include "../account/timed_log_out.php";
                 echo "Prosím přihlaš se než ohodnotíš tento seriál/film.<br>";
             }
             //výpis hodnocení
+            $sql = "SELECT idH, uzivatel, hodnota from hodnoceni where idS = $idS";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0){
+                echo "<table><tr><td>ID</td><td>uživatel</td><td>hodnocení</td></tr>";
+                while($row = $result->fetch_assoc()) {
+                  echo "<tr><td>" . $row["idH"]. "</td><td>" . $row["uzivatel"]. "</td><td>" . $row["hodnota"]. "</td></tr>";
+                }
+                echo "</table>";
+                
+              } else {
+                echo "0 results";
+              }
             
             $conn->close();
             ?>
