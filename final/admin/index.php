@@ -15,8 +15,8 @@ include "verification.php"; ?>
 <body>
     <h2>Admin super menu</h2>
     <section>
-        <a href="author_add.php"> <button>přidat seriály</button></a>
-        <a href="show_add.php"> <button>přidat autory</button></a>
+        <a href="show_add.php"> <button>přidat seriály</button></a>
+        <a href="author_add.php"> <button>přidat autory</button></a>
     </section>
 </body>
 

@@ -3,7 +3,8 @@
 
 <head>
     <?php include "../account/session_start.php";
-    $_SESSION['page'] = 3; ?>
+    $_SESSION['page'] = 3;
+    include "../account/timed_log_out.php"; ?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,6 +54,23 @@
                     echo "<img src='../img/profile/default.png' alt='profile picture' id='profile-pic'>";
                 }
                 echo "$user";
+                if ($_SESSION['user'] == true) {
+                    include "../db/active_db.php";
+                    // Create connection
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+
+                    // Check connection
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+                    $uid = $_SESSION['uid'];
+                    $sql = "SELECT admin FROM users WHERE uid = $uid";
+                    $result = $conn->query($sql);
+                    $row = mysqli_fetch_assoc($result);
+                    if ($row['admin'] == 1) {
+                        echo "<a href='../admin'><button>admin panel</button></a>";
+                    }
+                }
             } else {
                 echo "prosím přihlašte se";
             }
