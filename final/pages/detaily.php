@@ -126,12 +126,12 @@ include "../account/timed_log_out.php";
                     echo "<a style='color:red;'>Toto pole je povinné!</a>";
                 }
                 echo "
-            <button type='submit' name='submit' value='1'>Odeslat recenzi</button>
+            <input type='submit' name='submit' value='Odeslat recenzi'>
             </form>";
             }
 
             if (!empty($_POST['star']) && isset($_POST['star']) && $_POST['star'] != 0 && $_SESSION['user'] == true) {
-                if (!empty($_POST['submit']) && $_POST['submit'] = 1) {
+                if (isset($_POST['submit'])) {
                     //zápis
                     $idS = $_GET["idS"];
                     $uzivatel = $_SESSION['username'];
