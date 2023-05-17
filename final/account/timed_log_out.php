@@ -22,3 +22,6 @@ if ($_SESSION['user'] == true) {
         $_SESSION['time'] = time();
     }
 }
+if (empty($_SESSION['page']) || $_SESSION['page'] != 5) {
+    $_SESSION['url'] = $_SERVER['REQUEST_URI'];
+}
