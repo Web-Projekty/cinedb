@@ -65,7 +65,7 @@ include "../account/timed_log_out.php";
                 $row = $result->fetch_assoc();
             ?>
             <h2><?php echo $row['nazev']; ?></h2>
-            <table>
+            <table class="detail">
                 <tr>
                     <th>Obrázek</th>
                     <th>ID</th>
@@ -150,7 +150,7 @@ include "../account/timed_log_out.php";
             $sql = "SELECT idH, uzivatel, hodnota from hodnoceni where idS = $idS";
             $result = $conn->query($sql);
             if ($result->num_rows > 0){
-                echo "<table><tr><td>ID</td><td>uživatel</td><td>hodnocení</td></tr>";
+                echo "<table><tr><td>ID</td><td>Uživatel</td><td>Hodnocení</td></tr>";
                 while($row = $result->fetch_assoc()) {
                   echo "<tr><td>" . $row["idH"]. "</td><td>" . $row["uzivatel"]. "</td><td>" . $row["hodnota"]. "</td></tr>";
                 }
