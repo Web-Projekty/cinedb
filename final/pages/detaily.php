@@ -151,12 +151,13 @@ include "../account/timed_log_out.php";
                 $idS = $_GET['idS'];
                 $uzivatel = $_SESSION['username'];
                 $hodnota = $_POST['star'];
-
-                $connection = mysqli_connect('localhost:3306', 'cineDB', '#BDenic2305', 'cineDB');
+                include "../db/active_db.php";
+                $connection = new mysqli($servername, $username, $password, $dbname);
                 $existujiciHodnoceniQuery = "SELECT * FROM hodnoceni WHERE idS = '$idS' AND uzivatel = '$uzivatel'";
-                $result = mysqli_query($connection, $existujiciHodnoceniQuery);
+                $result = $connection->query($existujiciHodnoceniQuery);
+                $result2 = $result->fetch_assoc();
 
-                if($result != null){
+                if(!empty($result2['idS'])){
                     $sql = "UPDATE hodnoceni SET hodnota = '$hodnota' WHERE idS = '$idS' AND uzivatel = '$uzivatel'";
 
                     if ($conn->query($sql) === TRUE) {
