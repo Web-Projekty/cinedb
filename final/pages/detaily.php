@@ -152,7 +152,7 @@ include "../account/timed_log_out.php";
                 $uzivatel = $_SESSION['username'];
                 $hodnota = $_POST['star'];
 
-                $connection = mysqli_connect('localhost', 'root', '', 'cinedb');
+                $connection = mysqli_connect('localhost_3306', 'cineDB', '#BDenic2305', 'cineDB');
                 $existujiciHodnoceniQuery = "SELECT * FROM hodnoceni WHERE idS = '$idS' AND uzivatel = '$uzivatel'";
                 $result = mysqli_query($connection, $existujiciHodnoceniQuery);
 
