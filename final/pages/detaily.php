@@ -152,8 +152,11 @@ include "../account/timed_log_out.php";
                 $uzivatel = $_SESSION['username'];
                 $hodnota = $_POST['star'];
 
-                $existujiciHodnoceni =  "SELECT * FROM hodnoceni WHERE idS = '$idS' AND uzivatel = '$uzivatel'";
-                if($existujiciHodnoceni > 0){
+                $connection = mysqli_connect('localhost', 'root', '', 'cinedb');
+                $existujiciHodnoceniQuery = "SELECT * FROM hodnoceni WHERE idS = '$idS' AND uzivatel = '$uzivatel'";
+                $result = mysqli_query($connection, $existujiciHodnoceniQuery);
+
+                if($result != null){
                     $sql = "UPDATE hodnoceni SET hodnota = '$hodnota' WHERE idS = '$idS' AND uzivatel = '$uzivatel'";
 
                     if ($conn->query($sql) === TRUE) {
