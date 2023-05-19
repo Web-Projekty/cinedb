@@ -2,6 +2,8 @@
     margin: 40px 500px;
     margin-bottom: 120px;
     padding: 40px;
+
+    text-align: center;
 }
 
 table {
@@ -9,6 +11,9 @@ table {
     border-radius: 12px;
 
     margin-top: 25px;
+
+    width: 300px;
+    text-align: center;
 }
 
 table td,
@@ -43,6 +48,5 @@ select {
     .statistics {
         width: 100%;
         margin: 25px 0 25px 0;
-
     }
 }
