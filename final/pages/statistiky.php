@@ -42,14 +42,9 @@
         </header>
 
         <section class="statistics">
-            <table>
-                <tr>
-                    <td>Seriály</td>
-                    <td>Filmy</td>
-                    <td>Autoři</td>
-                    <td>Uživatelé</td>
-                </tr>
-                <tr>
+            <form action="" method="POST">
+                <input type="submit" value="výpis tabulky / aktualizace dat" name="vypis">
+            </form>   
                     <?php
                     include "../db/active_db.php";
 
@@ -60,6 +55,7 @@
                     if ($conn->connect_error) {
                         die("Connection failed: " . $conn->connect_error);
                     }
+                    if(isset($_POST['vypis'])){
                     //počet seriálů
                     $sql = "SELECT COUNT(idS) as 'tv' from serialy WHERE type = 'tv'";
                     $result = $conn->query($sql);
@@ -82,13 +78,22 @@
                     $users = $authors_assoc['users'];
                     mysqli_close($conn);
                     echo "
+                    <table>
+                    <tr>
+                    <td>Seriály</td>
+                    <td>Filmy</td>
+                    <td>Autoři</td>
+                    <td>Uživatelé</td>
+                    </tr>
+                    <tr>
                     <td>$tv</td>
                     <td>$movies</td>
                     <td>$authors</td>
-                    <td>$users</td>";
+                    <td>$users</td>
+                    </tr>
+                    </table>";
+                    }
                     ?>
-                </tr>
-            </table>
         </section>
 
         <?php include "../include/footer.php" ?>
