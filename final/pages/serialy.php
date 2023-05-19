@@ -52,7 +52,7 @@ include "../account/timed_log_out.php"; ?>
                         $radic = $_POST["radic"];
                     }
                 ?>
-                <input type="text" name="serialyH" value="<?php echo $serialyH ?>">
+                <input type="text" name="serialyH" value="<?php echo $serialyH ?>" placeholder="zadej jméno">
                 <input type="submit" value="vyhledat" name="vyhledat">
 
                 <select name="radic">
