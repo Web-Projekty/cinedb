@@ -43,16 +43,8 @@
 
         <section class="statistics">
             <form action="" method="POST">
-                <input type="submit" value="výpis tabulky / aktualizace" name="vypis">
+                <input type="submit" value="výpis tabulky / aktualizace dat" name="vypis">
             </form>   
-            <table>
-                <tr>
-                    <td>Seriály</td>
-                    <td>Filmy</td>
-                    <td>Autoři</td>
-                    <td>Uživatelé</td>
-                </tr>
-                <tr>
                     <?php
                     include "../db/active_db.php";
 
@@ -86,14 +78,22 @@
                     $users = $authors_assoc['users'];
                     mysqli_close($conn);
                     echo "
+                    <table>
+                    <tr>
+                    <td>Seriály</td>
+                    <td>Filmy</td>
+                    <td>Autoři</td>
+                    <td>Uživatelé</td>
+                    </tr>
+                    <tr>
                     <td>$tv</td>
                     <td>$movies</td>
                     <td>$authors</td>
-                    <td>$users</td>";
+                    <td>$users</td>
+                    </tr>
+                    </table>";
                     }
                     ?>
-                </tr>
-            </table>
         </section>
 
         <?php include "../include/footer.php" ?>
