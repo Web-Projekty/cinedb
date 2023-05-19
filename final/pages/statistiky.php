@@ -42,6 +42,9 @@
         </header>
 
         <section class="statistics">
+            <form action="" method="POST">
+                <input type="submit" value="výpis tabulky / aktualizace" name="vypis">
+            </form>   
             <table>
                 <tr>
                     <td>Seriály</td>
@@ -60,6 +63,7 @@
                     if ($conn->connect_error) {
                         die("Connection failed: " . $conn->connect_error);
                     }
+                    if(isset($_POST['vypis'])){
                     //počet seriálů
                     $sql = "SELECT COUNT(idS) as 'tv' from serialy WHERE type = 'tv'";
                     $result = $conn->query($sql);
@@ -86,6 +90,7 @@
                     <td>$movies</td>
                     <td>$authors</td>
                     <td>$users</td>";
+                    }
                     ?>
                 </tr>
             </table>
