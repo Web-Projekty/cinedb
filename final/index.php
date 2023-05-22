@@ -59,6 +59,10 @@
 
         </section>
 
+        <section class="about-website">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est vel consequuntur quisquam ex corporis. Ducimus laboriosam cupiditate vel soluta nesciunt.</p>
+        </section>
+
         <?php include "include/footer.php" ?>
     </div>
 
