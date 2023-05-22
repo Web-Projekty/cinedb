@@ -48,20 +48,22 @@
             </div>
         </header>
 
-        <section class="about-website">
-            <h2>O stránce</h2>
-            <br>
-            <div class="info">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicinelit. Laudantium architecto voluptatum aspernatucupiditate rerum laboriosam, autem dolore haruobcaecati non libero. Blanditiis maiores temporibunatus pariatur ex, omnis corporis modi eum consectetuquia illum tenetur, neque voluptatem ut. Dolores illsit mollitia et nam magni rem doloribus sed maioreut. Voluptates quisquam maxime, quidem tempore placeaenim cupiditate veniam, obcaecati iste veritatimolestiae eum tempora saepe earum necessitatibus iurquae. Excepturi blanditiis aut facere eaque ab maximesint cupiditate corporis fugiat voluptatum magnadeleniti repudiandae ipsa! Doloribus, illum. Temportotam eveniet voluptatum reprehenderit blanditiiducimus? Veniam, fugit pariatur. Maximenecessitatibus.</p>
+        <div class="flex-box sections">
+            <section class="about-website">
+                <h2>O stránce</h2>
                 <br>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt doloribus quae nulla odit, quia ipsam omnis dolore adipisci quo, facere autem atque eaque nisi nam sunt veniam. Maiores ipsam nam, quas nihil rem consectetur blanditiis veritatis provident ducimus reiciendis fugit. Autem modi nemo quibusdam commodi consectetur tempore soluta in? Maiores, maxime! Optio nesciunt a minus fuga quae excepturi doloribus modi alias molestias architecto velit ullam placeat aperiam, voluptatum id hic! Officiis, dolor dignissimos aliquam perferendis voluptates veritatis illum voluptas dicta voluptatum, officia sequi. Est blanditiis nobis aut porro atque accusantium neque aspernatur. Laborum libero laudantium id explicabo aspernatur aliquid odit nobis ipsa et similique optio omnis asperiores itaque porro.</p>
-            </div>
+                <div class="info">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicinelit. Laudantium architecto voluptatum aspernatucupiditate rerum laboriosam, autem dolore haruobcaecati non libero. Blanditiis maiores temporibunatus pariatur ex, omnis corporis modi eum consectetuquia illum tenetur, neque voluptatem ut. Dolores illsit mollitia et nam magni rem doloribus sed maioreut. Voluptates quisquam maxime, quidem tempore placeaenim cupiditate veniam, obcaecati iste veritatimolestiae eum tempora saepe earum necessitatibus iurquae. Excepturi blanditiis aut facere eaque ab maximesint cupiditate corporis fugiat voluptatum magnadeleniti repudiandae ipsa! Doloribus, illum. Temportotam eveniet voluptatum reprehenderit blanditiiducimus? Veniam, fugit pariatur. Maximenecessitatibus.</p>
+                    <br>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt doloribus quae nulla odit, quia ipsam omnis dolore adipisci quo, facere autem atque eaque nisi nam sunt veniam. Maiores ipsam nam, quas nihil rem consectetur blanditiis veritatis provident ducimus reiciendis fugit. Autem modi nemo quibusdam commodi consectetur tempore soluta in? Maiores, maxime! Optio nesciunt a minus fuga quae excepturi doloribus modi alias molestias architecto velit ullam placeat aperiam, voluptatum id hic! Officiis, dolor dignissimos aliquam perferendis voluptates veritatis illum voluptas dicta voluptatum, officia sequi. Est blanditiis nobis aut porro atque accusantium neque aspernatur. Laborum libero laudantium id explicabo aspernatur aliquid odit nobis ipsa et similique optio omnis asperiores itaque porro.</p>
+                </div>
+            </section>
 
-        </section>
-
-        <section class="about-website">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est vel consequuntur quisquam ex corporis. Ducimus laboriosam cupiditate vel soluta nesciunt.</p>
-        </section>
+            <section class="about-website">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est vel consequuntur quisquam ex corporis. Ducimus laboriosam cupiditate vel soluta nesciunt.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita dolorem vitae sunt dolore. Temporibus sint cupiditate dolorum porro saepe beatae quia voluptatem quae, officiis, ipsa tempore unde sit blanditiis praesentium.</p>
+            </section>
+        </div>
 
         <?php include "include/footer.php" ?>
     </div>
