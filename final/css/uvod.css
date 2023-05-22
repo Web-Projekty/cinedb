@@ -1,24 +1,40 @@
 .about-website {
-    margin: 40px 500px;
+    margin: 20px;
     margin-bottom: 120px;
     padding: 40px;
+
+    width: 35%;
+    height: 600px;
 }
 
 .about-website .info {
     font-size: 18px;
 }
 
+.sections {
+    flex-direction: row;
+}
+
 @media screen and (max-width: 1440px) {
     .about-website {
         width: 50%;
+        height: 100%;
         margin: 25px 0 25px 0;
+    }
+
+    .sections {
+        flex-direction: column;
     }
 }
 
 @media screen and (max-width: 768px) {
     .about-website {
         width: 100%;
+        height: 100%;
         margin: 25px 0 25px 0;
+    }
 
+    .sections {
+        flex-direction: column;
     }
 }
