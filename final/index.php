@@ -49,12 +49,12 @@
         </header>
 
         <div class="flex-box sections">
-            <section class="about-website">
+            <section class="intro">
                 <h2>Vítejte na CineDB!</h2>
                 <br>
                 <div class="info">
-                    <p>Jsme československá stránka pro všechny možné seriály všech žánrů.</p>
-                    <p>Pod záložkou seriály najdete všechny seriály, které se momentálně vyskytují u nás v databázi. Pokud vám nějaký chybí, tak ho můžete se vší libostí, po přihlášení, přidat a ohodnotit.</p>
+                    <p>Jsme československá stránka pro všechny možné seriály a filmy všech žánrů.</p>
+                    <p>Pod záložkou seriály najdete všechny seriály/filmy, které se momentálně vyskytují u nás v databázi. Pokud máte nápad na přidání, tak ho můžete se vší libostí, po přihlášení, přidat a rovnou ohodnotit.</p>
                     <p>V záložce autoři se nachází každý autor, který má své dílo v záložce seriály.</p>
                     <p>Statistiky vypisují aktuální počet seriálů, filmů, autorů a uživatelů. Zkrátka to shrnuje základní statistiky stránky.</p>
                     <p>Na závěr tu máme hodnocení, kde, pokud se vám bude chtít, můžete ohodnotit naši stránku od 1 do 5.</p>
@@ -62,9 +62,11 @@
                 </div>
             </section>
 
-            <section class="about-website">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est vel consequuntur quisquam ex corporis. Ducimus laboriosam cupiditate vel soluta nesciunt.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita dolorem vitae sunt dolore. Temporibus sint cupiditate dolorum porro saepe beatae quia voluptatem quae, officiis, ipsa tempore unde sit blanditiis praesentium.</p>
+            <section class="intro">
+                <div class="info">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est vel consequuntur quisquam ex corporis. Ducimus laboriosam cupiditate vel soluta nesciunt.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita dolorem vitae sunt dolore. Temporibus sint cupiditate dolorum porro saepe beatae quia voluptatem quae, officiis, ipsa tempore unde sit blanditiis praesentium.</p>
+                </div>
             </section>
         </div>
 
