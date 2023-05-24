@@ -11,9 +11,10 @@ table {
     border: 1px solid whitesmoke;
     border-radius: 12px;
 
+    padding: 10px;
     margin-top: 25px;
 
-    width: 300px;
+    width: 100%;
     text-align: center;
 }
 
@@ -42,6 +43,10 @@ select {
         width: 50%;
         margin: 25px 0 25px 0;
     }
+
+    table {
+        width: 100%;
+    }
 }
 
 
@@ -49,5 +54,9 @@ select {
     .authors {
         width: 100%;
         margin: 25px 0 25px 0;
+    }
+
+    table {
+        width: 100%;
     }
 }

@@ -55,6 +55,10 @@
                 <div class="info">
                     <p>Jsme československá stránka pro všechny možné seriály všech žánrů.</p>
                     <p>Pod záložkou seriály najdete všechny seriály, které se momentálně vyskytují u nás v databázi. Pokud vám nějaký chybí, tak ho můžete se vší libostí, po přihlášení, přidat a ohodnotit.</p>
+                    <p>V záložce autoři se nachází každý autor, který má své dílo v záložce seriály.</p>
+                    <p>Statistiky vypisují aktuální počet seriálů, filmů, autorů a uživatelů. Zkrátka to shrnuje základní statistiky stránky.</p>
+                    <p>Na závěr tu máme hodnocení, kde, pokud se vám bude chtít, můžete ohodnotit naši stránku od 1 do 5.</p>
+                    <p>Děkujeme za přečtení a přejeme příjemné prohlížení!</p>
                 </div>
             </section>
 
