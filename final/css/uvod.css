@@ -1,4 +1,4 @@
-.about-website {
+.intro {
     align-items: center;
 
     margin: 20px;
@@ -9,7 +9,7 @@
     height: 100%;
 }
 
-.about-website .info {
+.info {
     font-size: 18px;
 }
 
@@ -18,10 +18,14 @@
 }
 
 @media screen and (max-width: 1440px) {
-    .about-website {
+    .intro {
         width: 50%;
         height: 100%;
         margin: 25px 0 25px 0;
+    }
+
+    .intro:nth-child(2) {
+        margin-top: 2px;
     }
 
     .sections {
@@ -30,10 +34,14 @@
 }
 
 @media screen and (max-width: 768px) {
-    .about-website {
+    .intro {
         width: 100%;
         height: 100%;
         margin: 25px 0 25px 0;
+    }
+
+    .intro:nth-child(2) {
+        margin-top: 2px;
     }
 
     .sections {
