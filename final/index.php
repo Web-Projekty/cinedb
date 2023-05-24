@@ -50,12 +50,11 @@
 
         <div class="flex-box sections">
             <section class="about-website">
-                <h2>O stránce</h2>
+                <h2>Vítejte na CineDB!</h2>
                 <br>
                 <div class="info">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicinelit. Laudantium architecto voluptatum aspernatucupiditate rerum laboriosam, autem dolore haruobcaecati non libero. Blanditiis maiores temporibunatus pariatur ex, omnis corporis modi eum consectetuquia illum tenetur, neque voluptatem ut. Dolores illsit mollitia et nam magni rem doloribus sed maioreut. Voluptates quisquam maxime, quidem tempore placeaenim cupiditate veniam, obcaecati iste veritatimolestiae eum tempora saepe earum necessitatibus iurquae. Excepturi blanditiis aut facere eaque ab maximesint cupiditate corporis fugiat voluptatum magnadeleniti repudiandae ipsa! Doloribus, illum. Temportotam eveniet voluptatum reprehenderit blanditiiducimus? Veniam, fugit pariatur. Maximenecessitatibus.</p>
-                    <br>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt doloribus quae nulla odit, quia ipsam omnis dolore adipisci quo, facere autem atque eaque nisi nam sunt veniam. Maiores ipsam nam, quas nihil rem consectetur blanditiis veritatis provident ducimus reiciendis fugit. Autem modi nemo quibusdam commodi consectetur tempore soluta in? Maiores, maxime! Optio nesciunt a minus fuga quae excepturi doloribus modi alias molestias architecto velit ullam placeat aperiam, voluptatum id hic! Officiis, dolor dignissimos aliquam perferendis voluptates veritatis illum voluptas dicta voluptatum, officia sequi. Est blanditiis nobis aut porro atque accusantium neque aspernatur. Laborum libero laudantium id explicabo aspernatur aliquid odit nobis ipsa et similique optio omnis asperiores itaque porro.</p>
+                    <p>Jsme československá stránka pro všechny možné seriály všech žánrů.</p>
+                    <p>Pod záložkou seriály najdete všechny seriály, které se momentálně vyskytují u nás v databázi. Pokud vám nějaký chybí, tak ho můžete se vší libostí, po přihlášení, přidat a ohodnotit.</p>
                 </div>
             </section>
 
