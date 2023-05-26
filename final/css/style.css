@@ -163,12 +163,15 @@ section {
 }
 
 /* 
-    Uživatelský profil 
+   USER PROFILE
 */
 .user-profile {
     margin: 40px 500px;
     margin-bottom: 120px;
     padding: 40px;
+}
+.picture-upload{
+    margin-top: 10px;
 }
 
 /*
@@ -310,7 +313,6 @@ footer {
 */
 
 @media screen and (max-width: 1440px) {
-
     header {
         flex-direction: column;
         margin: 0 0 0 0;
@@ -342,7 +344,6 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
-
     header {
         flex-direction: column;
         margin: 0 0 0 0;
@@ -376,4 +377,3 @@ footer {
         width: 100%;
     }
 }
-
