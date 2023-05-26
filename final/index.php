@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Pták, Vlček, Rehák">
-    <meta name="keywords" content="databáze seriálů, hodnocení seriálů">
+    <meta name="keywords" content="CineDB, databáze seriálů, hodnocení seriálů, databáze filmů, seriály, filmy, autoři">
     <meta name="description" conntent="Databáze dostupných seriálů a filmů. Podle hodnocení se můžete zvážit zda seriál či film stojí za váš čas a pozornost.">
 
     <title>CineDB - Databáze seriálů</title>
@@ -64,7 +64,7 @@
 
             <section class="intro">
                 <div class="info">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est vel consequuntur quisquam ex corporis. Ducimus laboriosam cupiditate vel soluta nesciunt.</p>
+                    <p></p>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita dolorem vitae sunt dolore. Temporibus sint cupiditate dolorum porro saepe beatae quia voluptatem quae, officiis, ipsa tempore unde sit blanditiis praesentium.</p>
                 </div>
             </section>
