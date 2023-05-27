@@ -49,7 +49,6 @@ select {
     }
 }
 
-
 @media screen and (max-width: 768px) {
     .authors {
         width: 100%;

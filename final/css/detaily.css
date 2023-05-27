@@ -35,23 +35,23 @@ table {
 }
 
 .hidden {
-   opacity: 0;
-   width: 0;
-   height: 0;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 .star_off {
-   color: black;
-   -webkit-text-stroke: 1px;
-   -webkit-text-stroke-color: black;
-   -webkit-text-fill-color: white;
+    color: black;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: black;
+    -webkit-text-fill-color: white;
 }
 
 .star_on {
-   color: yellow;
-   -webkit-text-stroke: 1px;
-   -webkit-text-stroke-color: black;
-   transition: 200ms;
+    color: yellow;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: black;
+    transition: 200ms;
 }
 
 table td,

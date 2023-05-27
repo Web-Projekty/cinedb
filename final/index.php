@@ -1,7 +1,7 @@
-<?php 
-    include "account/session_start.php";
-    $_SESSION['page'] = 1;
-    include "account/timed_log_out.php"; 
+<?php
+include "account/session_start.php";
+$_SESSION['page'] = 1;
+include "account/timed_log_out.php";
 ?>
 <!DOCTYPE html>
 <html lang="cs">

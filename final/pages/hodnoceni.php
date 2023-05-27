@@ -16,6 +16,7 @@ include "../account/timed_log_out.php";
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/rating.css">
     <script src="../javascript/rating.js"></script>
+    <link rel="shortcut icon" href="../img/logo/logo_icon_exp.png" type="image/x-icon">
 </head>
 
 <body>
