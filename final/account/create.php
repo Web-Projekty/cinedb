@@ -67,7 +67,7 @@
                 if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
                 }
-                
+
                 $sql = "SELECT CASE WHEN EXISTS (SELECT 1 FROM users WHERE username = '$user') THEN 1 ELSE 0 END AS user_exists;";
                 $result = $conn->query($sql);
                 $row = mysqli_fetch_assoc($result);

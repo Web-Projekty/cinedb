@@ -12,7 +12,7 @@
     <title>CineDB - Statistiky</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/statistiky.css">
-
+    <link rel="shortcut icon" href="../img/logo/logo_icon_exp.png" type="image/x-icon">
 </head>
 
 <body>
@@ -44,40 +44,40 @@
         <section class="statistics">
             <form action="" method="POST">
                 <input type="submit" value="výpis tabulky / aktualizace dat" name="vypis">
-            </form>   
-                    <?php
-                    include "../db/active_db.php";
+            </form>
+            <?php
+            include "../db/active_db.php";
 
-                    // Create connection
-                    $conn = new mysqli($servername, $username, $password, $dbname);
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
 
-                    // Check connection
-                    if ($conn->connect_error) {
-                        die("Connection failed: " . $conn->connect_error);
-                    }
-                    if(isset($_POST['vypis'])){
-                    //počet seriálů
-                    $sql = "SELECT COUNT(idS) as 'tv' from serialy WHERE type = 'tv'";
-                    $result = $conn->query($sql);
-                    $tv_show_assoc = mysqli_fetch_assoc($result);
-                    $tv = $tv_show_assoc['tv'];
-                    //počet filmů
-                    $sql = "SELECT COUNT(idS) as 'movies' from serialy WHERE type = 'movie'";
-                    $result = $conn->query($sql);
-                    $movies_assoc = mysqli_fetch_assoc($result);
-                    $movies = $movies_assoc['movies'];
-                    //počet autorů
-                    $sql = "SELECT COUNT(idA) as 'authors' from autori";
-                    $result = $conn->query($sql);
-                    $authors_assoc = mysqli_fetch_assoc($result);
-                    $authors = $authors_assoc['authors'];
-                    //počet uživatelů
-                    $sql = "SELECT COUNT(uid) as 'users' from users";
-                    $result = $conn->query($sql);
-                    $authors_assoc = mysqli_fetch_assoc($result);
-                    $users = $authors_assoc['users'];
-                    mysqli_close($conn);
-                    echo "
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+            if (isset($_POST['vypis'])) {
+                //počet seriálů
+                $sql = "SELECT COUNT(idS) as 'tv' from serialy WHERE type = 'tv'";
+                $result = $conn->query($sql);
+                $tv_show_assoc = mysqli_fetch_assoc($result);
+                $tv = $tv_show_assoc['tv'];
+                //počet filmů
+                $sql = "SELECT COUNT(idS) as 'movies' from serialy WHERE type = 'movie'";
+                $result = $conn->query($sql);
+                $movies_assoc = mysqli_fetch_assoc($result);
+                $movies = $movies_assoc['movies'];
+                //počet autorů
+                $sql = "SELECT COUNT(idA) as 'authors' from autori";
+                $result = $conn->query($sql);
+                $authors_assoc = mysqli_fetch_assoc($result);
+                $authors = $authors_assoc['authors'];
+                //počet uživatelů
+                $sql = "SELECT COUNT(uid) as 'users' from users";
+                $result = $conn->query($sql);
+                $authors_assoc = mysqli_fetch_assoc($result);
+                $users = $authors_assoc['users'];
+                mysqli_close($conn);
+                echo "
                     <table>
                     <tr>
                     <td>Seriály</td>
@@ -92,8 +92,8 @@
                     <td>$users</td>
                     </tr>
                     </table>";
-                    }
-                    ?>
+            }
+            ?>
         </section>
 
         <?php include "../include/footer.php" ?>

@@ -13,7 +13,7 @@ include "../account/timed_log_out.php"; ?>
     <title>CineDB - Autoři</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/autori.css">
-
+    <link rel="shortcut icon" href="../img/logo/logo_icon_exp.png" type="image/x-icon">
 </head>
 
 <body>
@@ -45,26 +45,26 @@ include "../account/timed_log_out.php"; ?>
         <section class="authors">
             <form action="" method="POST">
                 <?php
-                    $autoriH = "";
-                    if(isset($_POST["autoriH"])){
-                        $autoriH = $_POST["autoriH"];
-                    }
-                    $radic = "";
-                    if(isset($_POST["radic"])){
-                        $radic = $_POST["radic"];
-                    }
+                $autoriH = "";
+                if (isset($_POST["autoriH"])) {
+                    $autoriH = $_POST["autoriH"];
+                }
+                $radic = "";
+                if (isset($_POST["radic"])) {
+                    $radic = $_POST["radic"];
+                }
                 ?>
                 <input type="text" name="autoriH" value="<?php echo $autoriH ?>" placeholder="zadej jméno">
                 <input type="submit" value="vyhledat" name="vyhledat">
 
                 <select name="radic">
-                    <option value="autori.jmeno ASC" <?php if($radic == "autori.jmeno ASC") echo "selected" ?>>podle jména</option>
-                    <option value="autori.prijmeni ASC" <?php if($radic == "autori.prijmeni ASC") echo "selected" ?>>podle přijmení</option>
-                    <option value="autori.idA ASC" <?php if($radic == "autori.idA ASC") echo "selected" ?>>podle ID</option>
+                    <option value="autori.jmeno ASC" <?php if ($radic == "autori.jmeno ASC") echo "selected" ?>>podle jména</option>
+                    <option value="autori.prijmeni ASC" <?php if ($radic == "autori.prijmeni ASC") echo "selected" ?>>podle přijmení</option>
+                    <option value="autori.idA ASC" <?php if ($radic == "autori.idA ASC") echo "selected" ?>>podle ID</option>
                 </select>
                 <input type="submit" value="řadit" name="radit">
             </form>
-            
+
             <table>
                 <tr>
                     <th>ID Autora</th>
@@ -83,11 +83,11 @@ include "../account/timed_log_out.php"; ?>
                 }
 
                 $sql = "SELECT autori.idA, autori.jmeno, autori.prijmeni from autori";
-                if(isset($_POST['vyhledat'])){
+                if (isset($_POST['vyhledat'])) {
                     $autoriH = $_POST["autoriH"];
                     $sql .= " WHERE autori.jmeno LIKE '%$autoriH%'";
                 }
-                if(isset($_POST["radit"])){
+                if (isset($_POST["radit"])) {
                     $radic = $_POST["radic"];
                     $autoriH = $_POST["autoriH"];
                     $sql = "SELECT autori.idA, autori.jmeno, autori.prijmeni from autori WHERE autori.jmeno LIKE '%$autoriH%' ORDER BY $radic";
@@ -104,7 +104,7 @@ include "../account/timed_log_out.php"; ?>
                     }
                     $conn->close();
                 }
-            ?>
+                ?>
             </table>
         </section>
 

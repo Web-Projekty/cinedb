@@ -12,6 +12,7 @@ include "../account/timed_log_out.php"; ?>
     <title>CineDB - Seriály</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/serialy.css">
+    <link rel="shortcut icon" href="../img/logo/logo_icon_exp.png" type="image/x-icon">
 </head>
 
 <body>
@@ -43,23 +44,23 @@ include "../account/timed_log_out.php"; ?>
         <section class="serials">
             <form action="" method="POST">
                 <?php
-                    $serialyH = "";
-                    if(isset($_POST["serialyH"])){
-                        $serialyH = $_POST["serialyH"];
-                    }
-                    $radic = "";
-                    if(isset($_POST["radic"])){
-                        $radic = $_POST["radic"];
-                    }
+                $serialyH = "";
+                if (isset($_POST["serialyH"])) {
+                    $serialyH = $_POST["serialyH"];
+                }
+                $radic = "";
+                if (isset($_POST["radic"])) {
+                    $radic = $_POST["radic"];
+                }
                 ?>
                 <input type="text" name="serialyH" value="<?php echo $serialyH ?>" placeholder="zadej jméno">
                 <input type="submit" value="vyhledat" name="vyhledat">
 
                 <select name="radic">
-                    <option value="serialy.nazev ASC" <?php if($radic == "serialy.nazev ASC") echo "selected" ?>>od A-Z</option>
-                    <option value="serialy.nazev DESC" <?php if($radic == "serialy.nazev DESC") echo "selected" ?>>od Z-A</option>
-                    <option value="serialy.idS ASC" <?php if($radic == "serialy.idS ASC") echo "selected" ?>>podle ID seriálu</option>
-                    <option value="serialy.idA ASC" <?php if($radic == "serialy.idA ASC") echo "selected" ?>>podle ID autora</option>
+                    <option value="serialy.nazev ASC" <?php if ($radic == "serialy.nazev ASC") echo "selected" ?>>od A-Z</option>
+                    <option value="serialy.nazev DESC" <?php if ($radic == "serialy.nazev DESC") echo "selected" ?>>od Z-A</option>
+                    <option value="serialy.idS ASC" <?php if ($radic == "serialy.idS ASC") echo "selected" ?>>podle ID seriálu</option>
+                    <option value="serialy.idA ASC" <?php if ($radic == "serialy.idA ASC") echo "selected" ?>>podle ID autora</option>
                 </select>
                 <input type="submit" value="řadit" name="radit">
             </form>
@@ -83,11 +84,11 @@ include "../account/timed_log_out.php"; ?>
                 }
 
                 $sql = "SELECT serialy.idS, serialy.nazev from serialy";
-                if(isset($_POST['vyhledat'])){
+                if (isset($_POST['vyhledat'])) {
                     $serialyH = $_POST["serialyH"];
                     $sql .= " WHERE serialy.nazev LIKE '%$serialyH%' ORDER BY $radic";
                 }
-                if(isset($_POST["radit"])){
+                if (isset($_POST["radit"])) {
                     $radic = $_POST["radic"];
                     $serialyH = $_POST["serialyH"];
                     $sql = "SELECT serialy.idS, serialy.nazev from serialy WHERE serialy.nazev LIKE '%$serialyH%' ORDER BY $radic";
@@ -107,7 +108,7 @@ include "../account/timed_log_out.php"; ?>
                         if ($counter < 1) {
                             $ratingAVG = "žádné recenze";
                         } else {
-                             $ratingAVG = round($total / $counter,2);
+                            $ratingAVG = round($total / $counter, 2);
                         }
                         echo "<tr>
                             <td><img src='../img/db/$idS.jpg'></td>" .
@@ -119,7 +120,7 @@ include "../account/timed_log_out.php"; ?>
                     }
                     $conn->close();
                 }
-            ?>
+                ?>
             </table>
         </section>
 
