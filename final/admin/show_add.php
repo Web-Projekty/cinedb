@@ -54,7 +54,7 @@ include "verification.php"; ?>
                 echo "<form method='get'>
     <button type='submit' name='submit' value='1'>Úprava serálů</button>
     <button type='submit' name='submit' value='2'>Přidat seriál</button>
-    <button type='submit' name='submit' value='3'>Upravit databázi WIP</button>
+    <button type='submit' name='submit' value='3'>Upravit databázi</button>
 </form>
 <a href='index.php'><button>Zpět</button></a>";
                 if (!empty($_SESSION['msg'])) {
@@ -216,7 +216,8 @@ include "verification.php"; ?>
                 <option value='1'>Smazat</option>
             </select>
             <button type='submit'>Provést</button>
-        </form>";
+        </form>
+        <a href='show_add.php'><button>Zpět</button></a>";
                         } else {
                             switch ($_POST['akce']) {
                                 case 1:

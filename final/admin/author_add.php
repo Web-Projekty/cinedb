@@ -52,10 +52,15 @@ include "verification.php"; ?>
             <?php
             if (empty($_GET['submit']) | !isset($_GET['submit'])) {
                 echo "<form method='get'>
-    <button type='submit' name='submit' value='1'>Úprava autorů WIP</button>
-    <button type='submit' name='submit' value='2'>Přidat autory WIP</button>
+    <button type='submit' name='submit' value='1'>Úprava autorů</button>
+    <button type='submit' name='submit' value='2'>Přidat autory</button>
     <button type='submit' name='submit' value='3'>Upravit databázi WIP</button>
-</form>";
+</form>
+<a href='index.php'><button>Zpět</button></a>";
+                if (!empty($_SESSION['msg'])) {
+                    echo $_SESSION['msg'];
+                    unset($_SESSION['msg']);
+                }
             } else {
                 switch ($_GET['submit']) {
                     case 1:
@@ -67,90 +72,73 @@ include "verification.php"; ?>
                             die("Connection failed: " . $conn->connect_error);
                         }
 
-                        $sql = "SELECT idS, nazev, idA, type FROM serialy";
+                        $sql = "SELECT idA, jmeno, prijmeni FROM autori";
                         $result = $conn->query($sql);
                         //echo $conn->info;
                         echo "
             <form method='get'>
             <label>Vyber akutualitu pro úpravu
-                <select name='idS'>";
+                <select name='idA'>";
                         while ($row = $result->fetch_assoc()) {
-                            $nazev = $row['nazev'];
-                            $idS = $row['idS'];
-                            echo "<option value='$idS'>$idS | $nazev</option>";
+                            $idA = $row['idA'];
+                            $jmeno = $row['jmeno'];
+                            $prijmeni = $row['prijmeni'];
+                            echo "<option value='$idA'>$idA | $jmeno $prijmeni</option>";
                         }
                         echo "</select>
             </label>
             <button type='submit' name='submit' value='11'>upravit</button>
             </form>
-            ";
+            <a href='author_add.php'><button>Zpět</button></a>";
                         break;
                     case 11:
-                        $idS = $_GET['idS'];
-                        $_SESSION['idS'] = $_GET['idS'];
-                        $sql = "SELECT idS, nazev, idA, type FROM serialy WHERE idS = $idS";
+                        $idA = $_GET['idA'];
+                        $_SESSION['idA'] = $_GET['idA'];
+                        $sql = "SELECT idA, jmeno, prijmeni FROM autori WHERE idA = $idA";
                         $result = $conn->query($sql);
                         $row = mysqli_fetch_array($result);
-                        $nazev = $row['nazev'];
+                        $jmeno = $row['jmeno'];
+                        $prijmeni = $row['prijmeni'];
                         $_SESSION['idAdd'] = $row['idA'];
                         echo "<form method='get'>
-            Název seriálu
-                <input type='text' name='nazev' value='$nazev'>
+            Jméno autora
+                <input type='text' name='jmeno' value='$jmeno'>
 
-            Autor
-                <select name='autor'>";
-                        $sql = "SELECT idA, jmeno, prijmeni FROM autori";
-                        $result = $conn->query($sql);
-                        while ($row = $result->fetch_assoc()) {
-                            $jmeno = $row['jmeno'];
-                            $idA = $row['idA'];
-                            $prijmeni = $row['prijmeni'];
-                            if ($_SESSION['idAdd'] == $idA) {
-                                echo "<option selected value='$idA'>$idA | $jmeno $prijmeni </option>";
-                            } else {
-                                echo "<option value='$idA'>$idA | $jmeno $prijmeni </option>";
-                            }
-                        }
-                        echo "
-                </select>
-                Typ
-                <select name='type'>";
-                        include "../db/typy.php";
-                        for ($i = 0; $i < sizeof($typy); $i++) {
-                            echo "<option value='$typy[$i]'>" . $typy[$i] . "</option>";
-                        }
-                        echo "</select>
+            Příjmení autora
+                <input type='text' name='prijmeni' value='$prijmeni'>
+
             <button type='submit' name='submit' value='12'>Odeslat úpravy</button>
-        </form>";
+        </form>
+        <a href='author_add.php?submit=1'><button>Zpět</button></a>";
                         break;
                     case 12:
-                        $nazev = $_GET['nazev'];
-                        $autor = $_GET['autor'];
-                        $type = $_GET['type'];
-                        $idS = $_SESSION['idS'];
-                        $sql = "UPDATE serialy SET nazev = '$nazev', idA='$autor', type='$type' WHERE idS=$idS";
+                        $jmeno = $_GET['jmeno'];
+                        $prijmeni = $_GET['prijmeni'];
+                        $idA = $_SESSION['idA'];
+                        $sql = "UPDATE autori SET jmeno = '$jmeno', prijmeni='$prijmeni' WHERE idA = $idA";
                         $result = $conn->query($sql);
-                        echo "změna proběhla úspěšně";
+                        echo "změna proběhla úspěšně
+                        <a href='author_add.php?idA=$idA&submit=11'><button>Zpět</button></a>";
                         break;
                     case 2:
-                        echo "<form method='get' class='thiccc'>
-            Náze aktuality
-                <input type='text' name='heading'>
-
-            Změna datumu
-                <input type='date'name='date'>
-
-            Obsah aktuality
-                <textarea name='content' cols='30' rows='15'></textarea>
-            <button type='submit' name='submit' value='21'>Odeslat úpravy</button>
-        </form>";
+                        echo "<form method='get'>
+                        Jméno autora
+                            <input type='text' name='jmeno'>
+            
+                        Příjmení autora
+                            <input type='text' name='prijmeni'>
+            
+                        <button type='submit' name='submit' value='21'>Odeslat úpravy</button>
+                    </form>
+                    <a href='author_add.php'><button>Zpět</button></a>";
                         break;
                     case 21:
-                        $content = $_GET['content'];
-                        $date = $_GET['date'];
-                        $heading = $_GET['heading'];
-                        $sql = "INSERT INTO aktuality(date,heading,content) VALUES( '$date 00:00:00','$heading','$content')";
+                        $jmeno = $_GET['jmeno'];
+                        $prijmeni = $_GET['prijmeni'];
+                        $sql = "INSERT INTO autori(jmeno,prijmeni) VALUES( '$jmeno','$prijmeni')";
                         $result = $conn->query($sql);
+                        $_SESSION['msg'] = "Autor úspěšně přidán";
+                        header("Location: author_add.php");
                         break;
                     case 3:
                         if (empty($_POST['akce']) || empty($_POST['vyber'])) {
