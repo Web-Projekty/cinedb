@@ -150,6 +150,7 @@ include "../account/timed_log_out.php";
                     //zápis
                     if (isset($_POST['submit'])) {
                         $idS = $_GET['idS'];
+                        //$_SESSION['idS'] = $_GET['idS'];
                         $uzivatel = $_SESSION['username'];
                         $hodnota = $_POST['star'];
                         include "../db/active_db.php";
@@ -162,7 +163,8 @@ include "../account/timed_log_out.php";
                             $sql = "UPDATE hodnoceni SET hodnota = '$hodnota' WHERE idS = '$idS' AND uzivatel = '$uzivatel'";
 
                             if ($conn->query($sql) === TRUE) {
-                                echo "Zápis proběhl úspěšně";
+                                $_SESSION['msg'] = "Zápis proběhl úspěšně<script src='test.js'></script>";
+                                header("Location: detaily.php?idS=$idS");
                             } else {
                                 echo "Chyba při zápisu: " . $conn->error;
                             }
@@ -171,13 +173,17 @@ include "../account/timed_log_out.php";
                     VALUES ('$idS','$uzivatel','$hodnota')";
 
                             if ($conn->query($sql) === TRUE) {
-                                echo "Zápis proběhl úspěšně";
+                                $_SESSION['msg'] = "Zápis proběhl úspěšně";
+                                header("Location: detaily.php?idS=$idS");
                             } else {
                                 echo "Chyba při zápisu: " . $conn->error;
                             }
                         }
                     }
-
+                    if (!empty($_SESSION['msg'])) {
+                        echo $_SESSION['msg'];
+                        unset($_SESSION['msg']);
+                    }
                     $conn->close();
                     ?>
         </section>
