@@ -30,7 +30,7 @@ include "verification.php"; ?>
 
             <nav>
                 <ul class="header-nav">
-                    <li><a href="../index.php" id="selected">Úvod</a></li>
+                    <li><a href="../index.php">Úvod</a></li>
                     <li><a href="../pages/serialy.php">Seriály</a></li>
                     <li><a href="../pages/autori.php">Autoři</a></li>
                     <li><a href="../pages/statistiky.php">Statistiky</a></li>
@@ -51,7 +51,7 @@ include "verification.php"; ?>
             <h2>Admin super menu</h2>
             <section>
                 <a href="show_add.php"> <button>Seriály</button></a>
-                <a href="author_add.php"> <button>Autory</button></a>
+                <a href="author_add.php"> <button>Autoři</button></a>
             </section>
 
         </section>
