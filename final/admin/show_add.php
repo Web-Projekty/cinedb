@@ -48,7 +48,7 @@ include "verification.php"; ?>
         </header>
 
         <section class="about-website">
-            <h2>Přidání/úprava seriálu</h2>
+            <h2>Přidání/úprava seriálů</h2>
             <?php
             if (empty($_GET['submit']) | !isset($_GET['submit'])) {
                 echo "<form method='get'>

@@ -13,7 +13,7 @@ include "verification.php"; ?>
     <meta name="keywords" content="databáze seriálů, hodnocení seriálů">
     <meta name="description" conntent="Databáze dostupných seriálů a filmů. Podle hodnocení se můžete zvážit zda seriál či film stojí za váš čas a pozornost.">
 
-    <title>Přidat/upravit autory</title>
+    <title>Přidání/úprava autorů</title>
 
     <link rel="shortcut icon" href="../img/logo/logo_icon_exp.png" type="image/x-icon">
 
@@ -54,7 +54,7 @@ include "verification.php"; ?>
                 echo "<form method='get'>
     <button type='submit' name='submit' value='1'>Úprava autorů</button>
     <button type='submit' name='submit' value='2'>Přidat autory</button>
-    <button type='submit' name='submit' value='3'>Upravit databázi WIP</button>
+    <button type='submit' name='submit' value='3'>Upravit databázi</button>
 </form>
 <a href='index.php'><button>Zpět</button></a>";
                 if (!empty($_SESSION['msg'])) {
@@ -144,7 +144,7 @@ include "verification.php"; ?>
                         if (empty($_POST['akce']) || empty($_POST['vyber'])) {
 
                             echo "<form method='post'>";
-                            $sql = "SELECT idA, date, heading, content FROM aktuality";
+                            $sql = "SELECT idA, jmeno, prijmeni FROM autori";
                             $result = $conn->query($sql);
                             echo "<table>
             <tr>
@@ -153,24 +153,18 @@ include "verification.php"; ?>
                 <th>Datum</th>
             </tr>";
                             while ($row = $result->fetch_assoc()) {
-                                $heading = $row['heading'];
-
                                 $idA = $row['idA'];
-                                //timestamp
-                                $date = $row['date'];
-                                $tmp1 = explode(" ", $row['date']);
-                                //date
-                                $tmp2 = explode("-", $tmp1[0]);
-                                $date = date("d. m. Y", mktime(0, 0, 0, $tmp2[1], $tmp2[2], $tmp2[0]));
+                                $jmeno = $row['jmeno'];
+                                $prijmeni = $row['prijmeni'];
                                 echo " <tr> 
                     <td>
                         <input type='radio' name='vyber' value='$idA'>
                     </td>
                     <td>
-                        $heading
+                        $jmeno
                     </td>
                     <td>
-                        $date
+                        $prijmeni
                     </td>
                     </tr>
                     ";
@@ -186,9 +180,10 @@ include "verification.php"; ?>
                             switch ($_POST['akce']) {
                                 case 1:
                                     $idA = $_POST['vyber'];
-                                    $sql = "DELETE FROM aktuality WHERE idA = $idA;";
+                                    $sql = "DELETE FROM autori WHERE idA = $idA;";
                                     $result = $conn->query($sql);
-                                    echo "Aktualita úspěšně smazána.";
+                                    $_SESSION['msg'] = "Autor úspěšně smazán";
+                                    header("Location: author_add.php");
                                     break;
                                 default:
                                     echo "error - default";
