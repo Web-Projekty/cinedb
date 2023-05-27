@@ -1,0 +1,3 @@
+<?php
+//Redirection
+header("Location: ../");
