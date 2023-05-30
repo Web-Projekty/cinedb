@@ -2,6 +2,18 @@
 <html lang="cs">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5N5BJHQ74R"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-5N5BJHQ74R');
+    </script>
     <?php include "../account/session_start.php";
     $_SESSION['page'] = 3;
     include "../account/timed_log_out.php"; ?>
@@ -9,7 +21,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Databáze seriálů - Autoři</title>
+    <title>CineDB - <?php echo $_SESSION['username']?></title>
     <link rel="stylesheet" href="../css/style.css">
     <style>
         img {
