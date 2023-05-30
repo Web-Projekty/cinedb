@@ -10,6 +10,18 @@ $_SESSION['page'] = 4; ?>
 </style>
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5N5BJHQ74R"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-5N5BJHQ74R');
+    </script>
     <script>
         timer = setInterval(count, 1000); // 200 = 200ms delay between counter changes. Lower num = faster, Bigger = slower.
 
