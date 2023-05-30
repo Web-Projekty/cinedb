@@ -26,12 +26,32 @@ include "../account/timed_log_out.php";
     <meta name="keywords" content="CineDB, databáze seriálů, hodnocení seriálů, databáze filmů, seriály, filmy, autoři">
     <meta name="description" content="Databáze dostupných seriálů a filmů. Podle hodnocení se můžete zvážit zda seriál či film stojí za váš čas a pozornost.">
 
-    <title>Detaily</title>
+    <?php
+    include "../db/active_db.php";
 
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/detaily.css">
-    <script src="../javascript/rating.js"></script>
-    <link rel="shortcut icon" href="../img/logo/logo_icon_exp.png" type="image/x-icon">
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    if (isset($_GET['idS'])) {
+        $idS = $_GET['idS'];
+    }
+    $sql = "SELECT serialy.idS, serialy.nazev, autori.jmeno, autori.prijmeni, type from serialy inner join autori on serialy.idA = autori.idA WHERE idS = $idS";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+    ?>
+
+        <title>Detaily - <?php echo $row['nazev'] ?></title>
+
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/detaily.css">
+        <script src="../javascript/rating.js"></script>
+        <link rel="shortcut icon" href="../img/logo/logo_icon_exp.png" type="image/x-icon">
 </head>
 
 <body>
@@ -61,71 +81,53 @@ include "../account/timed_log_out.php";
         </header>
 
         <section class="details">
+
+            <h2><?php echo $row['nazev']; ?></h2>
+            <table class="detail">
+                <tr>
+                    <th>Obrázek</th>
+                    <th>ID</th>
+                    <th>autor</th>
+                    <th>hodnocení</th>
+                    <th>typ</th>
+                    <th>zpět</th>
+                </tr>
+
             <?php
-            include "../db/active_db.php";
-
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
+            $sql = "SELECT hodnota from hodnoceni WHERE idS = '$idS'";
+            $rating_result = $conn->query($sql);
+            $counter = 0;
+            $total = 0;
+            while ($rating = $rating_result->fetch_assoc()) {
+                $counter++;
+                $total += $rating['hodnota'];
+            }
+            if ($counter < 1) {
+                $ratingAVG = "žádné recenze";
+            } else {
+                $ratingAVG = round($total / $counter, 2);
             }
 
-            if (isset($_GET['idS'])) {
-                $idS = $_GET['idS'];
-            }
-            $sql = "SELECT serialy.idS, serialy.nazev, autori.jmeno, autori.prijmeni, type from serialy inner join autori on serialy.idA = autori.idA WHERE idS = $idS";
-            $result = $conn->query($sql);
             if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-            ?>
-                <h2><?php echo $row['nazev']; ?></h2>
-                <table class="detail">
-                    <tr>
-                        <th>Obrázek</th>
-                        <th>ID</th>
-                        <th>autor</th>
-                        <th>hodnocení</th>
-                        <th>typ</th>
-                        <th>zpět</th>
-                    </tr>
-
-                <?php
-                $sql = "SELECT hodnota from hodnoceni WHERE idS = '$idS'";
-                $rating_result = $conn->query($sql);
-                $counter = 0;
-                $total = 0;
-                while ($rating = $rating_result->fetch_assoc()) {
-                    $counter++;
-                    $total += $rating['hodnota'];
-                }
-                if ($counter < 1) {
-                    $ratingAVG = "žádné recenze";
-                } else {
-                    $ratingAVG = round($total / $counter, 2);
-                }
-
-                if ($result->num_rows > 0) {
-                    echo "<tr>
+                echo "<tr>
             <td><img src='../img/db/$idS.jpg'></td>" .
-                        "<td>" . $row['idS'] . "</td>
+                    "<td>" . $row['idS'] . "</td>
             <td>" . $row['jmeno'] . " " . $row['prijmeni'] . "</td>
             <td>" . $ratingAVG . "</td>
             <td>" . $row['type'] . "</td>
             <td><a href='serialy.php'>zpět</a>
             </tr>";
-                }
             }
-                ?>
+        }
+            ?>
 
-                <form method="post">
-                    <?php
-                    if ($_SESSION['user'] == true) {
-                        if (isset($_POST['star'])) {
-                            $star = $_POST['star'];
-                        }
-                        echo "<div class='stars'>
+            <form method="post">
+                <?php
+                if ($_SESSION['user'] == true) {
+                    if (isset($_POST['star'])) {
+                        $star = $_POST['star'];
+                    }
+                    echo "<div class='stars'>
             <input type='radio' name='star' class='hidden' value='0' checked>
             <label><input type='radio' name='star' class='hidden' value='1'>
                 <a class='star_on' onclick='star(1)' id='star_1'>★</a> </label>
@@ -138,69 +140,61 @@ include "../account/timed_log_out.php";
             <label><input type='radio' name='star' class='hidden' value='5'>
                 <a class='star_off' onclick='star(5)' id='star_5'>★</a> </label>
             </div>";
-                        if (isset($star) && empty($star)) {
-                            echo "<a style='color:red;'>Toto pole je povinné!</a>";
-                        }
-                        echo "
+                    if (isset($star) && empty($star)) {
+                        echo "<a style='color:red;'>Toto pole je povinné!</a>";
+                    }
+                    echo "
             <input type='submit' name='submit' value='Odeslat recenzi'>
             </form>";
-                    } else {
-                        echo "Prosím přihlašte se, než ohodnotíte tento seriál/film.<br>";
+                } else {
+                    echo "Prosím přihlašte se, než ohodnotíte tento seriál/film.<br>";
+                }
+
+                //výpis hodnocení
+                echo "<h3>recenze</h3>";
+                $sql = "SELECT idH, uzivatel, hodnota from hodnoceni where idS = $idS";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    echo "<table><tr><td>ID</td><td>uživatel</td><td>hodnocení</td></tr>";
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr><td>" . $row["idH"] . "</td><td>" . $row["uzivatel"] . "</td><td>" . $row["hodnota"] . "</td></tr>";
                     }
+                    echo "</table>";
+                } else {
+                    echo "nebyly přidány žádné recenze";
+                }
 
-                    //výpis hodnocení
-                    echo "<h3>recenze</h3>";
-                    $sql = "SELECT idH, uzivatel, hodnota from hodnoceni where idS = $idS";
-                    $result = $conn->query($sql);
-                    if ($result->num_rows > 0) {
-                        echo "<table><tr><td>ID</td><td>uživatel</td><td>hodnocení</td></tr>";
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<tr><td>" . $row["idH"] . "</td><td>" . $row["uzivatel"] . "</td><td>" . $row["hodnota"] . "</td></tr>";
-                        }
-                        echo "</table>";
+                //zápis
+                if (isset($_POST['submit'])) {
+                    $idS = $_GET['idS'];
+                    //$_SESSION['idS'] = $_GET['idS'];
+                    $uzivatel = $_SESSION['username'];
+                    $hodnota = $_POST['star'];
+                    include "../db/active_db.php";
+                    $connection = new mysqli($servername, $username, $password, $dbname);
+                    $existujiciHodnoceniQuery = "SELECT * FROM hodnoceni WHERE idS = '$idS' AND uzivatel = '$uzivatel'";
+                    $result = $connection->query($existujiciHodnoceniQuery);
+                    $result2 = $result->fetch_assoc();
+
+                    if (!empty($result2['idS'])) {
+                        $sql = "UPDATE hodnoceni SET hodnota = '$hodnota' WHERE idS = '$idS' AND uzivatel = '$uzivatel'";
                     } else {
-                        echo "nebyly přidány žádné recenze";
-                    }
-
-                    //zápis
-                    if (isset($_POST['submit'])) {
-                        $idS = $_GET['idS'];
-                        //$_SESSION['idS'] = $_GET['idS'];
-                        $uzivatel = $_SESSION['username'];
-                        $hodnota = $_POST['star'];
-                        include "../db/active_db.php";
-                        $connection = new mysqli($servername, $username, $password, $dbname);
-                        $existujiciHodnoceniQuery = "SELECT * FROM hodnoceni WHERE idS = '$idS' AND uzivatel = '$uzivatel'";
-                        $result = $connection->query($existujiciHodnoceniQuery);
-                        $result2 = $result->fetch_assoc();
-
-                        if (!empty($result2['idS'])) {
-                            $sql = "UPDATE hodnoceni SET hodnota = '$hodnota' WHERE idS = '$idS' AND uzivatel = '$uzivatel'";
-
-                            if ($conn->query($sql) === TRUE) {
-                                $_SESSION['msg'] = "Zápis proběhl úspěšně<script src='test.js'></script>";
-                                header("Location: detaily.php?idS=$idS");
-                            } else {
-                                echo "Chyba při zápisu: " . $conn->error;
-                            }
-                        } else {
-                            $sql = "INSERT INTO hodnoceni (idS, uzivatel, hodnota)
+                        $sql = "INSERT INTO hodnoceni (idS, uzivatel, hodnota)
                     VALUES ('$idS','$uzivatel','$hodnota')";
-
-                            if ($conn->query($sql) === TRUE) {
-                                $_SESSION['msg'] = "Zápis proběhl úspěšně";
-                                header("Location: detaily.php?idS=$idS");
-                            } else {
-                                echo "Chyba při zápisu: " . $conn->error;
-                            }
-                        }
                     }
-                    if (!empty($_SESSION['msg'])) {
-                        echo $_SESSION['msg'];
-                        unset($_SESSION['msg']);
+                    if ($conn->query($sql) === TRUE) {
+                        $_SESSION['msg'] = "Zápis proběhl úspěšně";
+                        header("Location: detaily.php?idS=$idS");
+                    } else {
+                        echo "Chyba při zápisu: " . $conn->error;
                     }
-                    $conn->close();
-                    ?>
+                }
+                if (!empty($_SESSION['msg'])) {
+                    echo $_SESSION['msg'];
+                    unset($_SESSION['msg']);
+                }
+                $conn->close();
+                ?>
         </section>
 
         <?php include "../include/footer.php" ?>
