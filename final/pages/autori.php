@@ -43,7 +43,7 @@ include "../account/timed_log_out.php"; ?>
         </header>
 
         <section class="authors">
-            <form action="" method="POST">
+            <form method="POST">
                 <?php
                 $autoriH = "";
                 if (isset($_POST["autoriH"])) {
