@@ -159,7 +159,8 @@ include "../account/timed_log_out.php";
                     echo "
                             </td>
                         </tr>
-                    </table>";
+                    </table>
+                    </form>";
                 }
                 ?>
         </section>

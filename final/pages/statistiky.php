@@ -45,7 +45,7 @@
         </header>
 
         <section class="statistics">
-            <form action="" method="POST">
+            <form method="POST">
                 <input type="submit" value="výpis tabulky / aktualizace dat" name="vypis">
             </form>
             <?php
