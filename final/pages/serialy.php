@@ -111,7 +111,7 @@ include "../account/timed_log_out.php"; ?>
                             $ratingAVG = round($total / $counter, 2);
                         }
                         echo "<tr>
-                            <td><img src='../img/db/$idS.jpg'></td>" .
+                            <td><img src='../img/db/$idS.jpg' alt='logo'></td>" .
                             "<td>" . $row['idS'] . "</td>
                             <td>" . $row['nazev'] . "</td>
                             <td>" . $ratingAVG . "</td>

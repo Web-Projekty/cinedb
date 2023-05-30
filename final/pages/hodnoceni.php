@@ -46,7 +46,7 @@ include "../account/timed_log_out.php";
         </header>
 
         <section class="rating">
-            <form method="post">
+            <form action="" method="post">
 
                 <?php
                 $filename = "../txt/hodnoceni.txt";
