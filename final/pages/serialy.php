@@ -42,7 +42,7 @@ include "../account/timed_log_out.php"; ?>
         </header>
 
         <section class="serials">
-            <form action="" method="POST">
+            <form method="POST">
                 <?php
                 $serialyH = "";
                 if (isset($_POST["serialyH"])) {
