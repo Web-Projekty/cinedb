@@ -85,7 +85,6 @@ include "../account/timed_log_out.php"; ?>
                     <th>ID</th>
                     <th>Název</th>
                     <th>Hodnocení</th>
-                    <th>Detaily</th>
                 </tr>
                 <?php
                 include "../db/active_db.php";
@@ -126,11 +125,10 @@ include "../account/timed_log_out.php"; ?>
                             $ratingAVG = round($total / $counter, 2);
                         }
                         echo "<tr>
-                            <td><img src='../img/db/$idS.jpg' alt='logo'></td>" .
+                            <td><a href='detaily.php?idS=$idS'><img src='../img/db/$idS.jpg' alt='logo'></a></td>" .
                             "<td>" . $row['idS'] . "</td>
-                            <td>" . $row['nazev'] . "</td>
+                            <td><a href='detaily.php?idS=$idS' style='color: var(--theme-text-color);'>" . $row['nazev'] . "</a></td>
                             <td>" . $ratingAVG . "</td>
-                            <td><a href='detaily.php?idS=$idS'>podrobnosti</a>
                             </tr>";
                     }
                     $conn->close();
