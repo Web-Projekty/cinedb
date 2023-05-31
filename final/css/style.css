@@ -166,6 +166,11 @@ section {
    USER PROFILE
 */
 .user-profile {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     margin: 40px 500px;
     margin-bottom: 120px;
     padding: 40px;
