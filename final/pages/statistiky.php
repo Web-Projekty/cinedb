@@ -72,15 +72,30 @@
             }
             if (isset($_POST['vypis'])) {
                 //počet seriálů
-                $sql = "SELECT COUNT(idS) as 'tv' from serialy WHERE type = 'tv'";
+                $sql = "SELECT COUNT(idS) as 'tv' from serialy WHERE type = 'TV'";
                 $result = $conn->query($sql);
                 $tv_show_assoc = mysqli_fetch_assoc($result);
                 $tv = $tv_show_assoc['tv'];
                 //počet filmů
-                $sql = "SELECT COUNT(idS) as 'movies' from serialy WHERE type = 'movie'";
+                $sql = "SELECT COUNT(idS) as 'movies' from serialy WHERE type = 'MOVIE'";
                 $result = $conn->query($sql);
                 $movies_assoc = mysqli_fetch_assoc($result);
                 $movies = $movies_assoc['movies'];
+                //počet filmů
+                $sql = "SELECT COUNT(idS) as 'ona' from serialy WHERE type = 'ONA'";
+                $result = $conn->query($sql);
+                $ona_assoc = mysqli_fetch_assoc($result);
+                $ona = $ona_assoc['ona'];
+                //počet filmů
+                $sql = "SELECT COUNT(idS) as 'ova' from serialy WHERE type = 'OVA'";
+                $result = $conn->query($sql);
+                $ova_assoc = mysqli_fetch_assoc($result);
+                $ova = $ova_assoc['ova'];
+                //počet filmů
+                $sql = "SELECT COUNT(idS) as 'special' from serialy WHERE type = 'Special'";
+                $result = $conn->query($sql);
+                $special_assoc = mysqli_fetch_assoc($result);
+                $special = $special_assoc['special'];
                 //počet autorů
                 $sql = "SELECT COUNT(idA) as 'authors' from autori";
                 $result = $conn->query($sql);
@@ -97,12 +112,18 @@
                     <tr>
                     <td>Seriály</td>
                     <td>Filmy</td>
+                    <td>ONA</td>
+                    <td>OVA</td>
+                    <td>Special</td>
                     <td>Autoři</td>
                     <td>Uživatelé</td>
                     </tr>
                     <tr>
                     <td>$tv</td>
                     <td>$movies</td>
+                    <td>$ona</td>
+                    <td>$ova</td>
+                    <td>$special</td>
                     <td>$authors</td>
                     <td>$users</td>
                     </tr>
