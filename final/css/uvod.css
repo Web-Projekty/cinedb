@@ -2,10 +2,9 @@
     align-items: center;
 
     margin: 20px;
-    margin-bottom: 120px;
     padding: 40px;
-
-    width: 35%;
+    
+    width: 45%;
     height: 100%;
 }
 
@@ -14,7 +13,7 @@
 }
 
 .sections {
-    flex-direction: row;
+    flex-direction: column;
 }
 
 @media screen and (max-width: 1440px) {
