@@ -21,6 +21,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -302,7 +303,7 @@ footer {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--scroll-bar-background-color);
+    background: var(--theme-page-background-color);
 }
 
 ::-webkit-scrollbar-thumb {
