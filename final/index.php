@@ -76,8 +76,7 @@ include "account/timed_log_out.php";
 
             <section class="intro">
                 <div class="info">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio nostrum incidunt placeat? Praesentium exercitationem amet modi tenetur quis possimus magnam, totam pariatur hic dignissimos. Deserunt quasi quidem placeat quae delectus!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita dolorem vitae sunt dolore. Temporibus sint cupiditate dolorum porro saepe beatae quia voluptatem quae, officiis, ipsa tempore unde sit blanditiis praesentium.</p>
+                    <p>Stránka byla vytvořena jako závěrečný projekt 2. ročníku.</p>
                 </div>
             </section>
         </div>
