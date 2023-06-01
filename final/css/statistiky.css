@@ -13,7 +13,7 @@ table {
 
     margin-top: 25px;
 
-    width: 300px;
+    width: 500px;
     text-align: center;
 }
 
@@ -42,11 +42,19 @@ select {
         width: 50%;
         margin: 25px 0 25px 0;
     }
+
+    table {
+        width: 350px;
+    }
 }
 
 @media screen and (max-width: 768px) {
     .statistics {
         width: 100%;
         margin: 25px 0 25px 0;
+    }
+
+    table {
+        width: 380px;
     }
 }
