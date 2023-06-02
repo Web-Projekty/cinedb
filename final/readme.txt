@@ -1,1 +1,5 @@
-složka pro spojení HTML, CSS + PHP, MySQL
+Složka pro finální verzi webového projektu CineDB.
+
+Pro vyzkoušení administrátorských funkcí je potřeba přihlášení skrz administrátorský účet!!
+uživatelské jméno: admin
+heslo: 12345678

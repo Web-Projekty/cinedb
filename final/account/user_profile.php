@@ -28,6 +28,7 @@
             width: 100px;
         }
     </style>
+    <link rel="shortcut icon" href="../img/logo/logo_icon_exp.png" type="image/x-icon">
 </head>
 
 <body>

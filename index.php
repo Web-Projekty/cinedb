@@ -1,3 +1,3 @@
 <?php
-//Redirection
+//Redirection - přesměrování
 header("Location: final/");
