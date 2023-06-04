@@ -53,7 +53,7 @@
         <section class="register">
 
             <h2>Registrace</h2>
-            <form method="get">
+            <form method="post">
                 <div class="un">
                     <label for="usern">Uživatelské jméno</label>
                     <input type="text" id="usern" name="username" placeholder="Zadejte jméno">
@@ -68,11 +68,11 @@
             </form>
 
             <?php
-            if (!empty($_GET['username']) && !empty($_GET['password'])) {
+            if (!empty($_POST['username']) && !empty($_POST['password'])) {
                 include "../db/active_db.php";
 
-                $user = $_GET['username'];
-                $pass = hash("gost-crypto", $_GET['password']);
+                $user = $_POST['username'];
+                $pass = hash("gost-crypto", $_POST['password']);
                 // Create connection
                 $conn = new mysqli($servername, $username, $password, $dbname);
                 // Check connection
