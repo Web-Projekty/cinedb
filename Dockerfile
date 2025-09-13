@@ -1,8 +1,5 @@
 FROM php:8.3.23-apache-bullseye
 
-# install Composer
-RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
 # install dependencies
 WORKDIR /var/www/html
 
