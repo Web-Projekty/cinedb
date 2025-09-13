@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
     libzip-dev
 # configure PHP
 #COPY php.ini /usr/local/etc/php/php.ini
+
 RUN docker-php-ext-install pdo_mysql mysqli zip
 
 COPY ./ ./

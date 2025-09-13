@@ -1,6 +1,8 @@
 services:
-    travel-blog:
+    cinedb:
         container_name: cinedb
+        labels:
+            - com.centurylinklabs.watchtower.enable=true
         build:
             context: .
             dockerfile: Dockerfile
