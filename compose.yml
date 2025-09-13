@@ -9,6 +9,7 @@ services:
         # volumes:
         #     - ./:/var/www/html
         restart: always
+        init: true
         networks:
             - universal-db-network
 
