@@ -3,9 +3,7 @@ services:
         container_name: cinedb
         labels:
             - com.centurylinklabs.watchtower.enable=true
-        build:
-            context: .
-            dockerfile: Dockerfile
+        image: wlczak/cinedb:latest
         ports:
             - "9876:80"
         # volumes:
@@ -18,3 +16,4 @@ networks:
     universal-db-network:
         driver: bridge
         name: universal-db-network
+        external: true
