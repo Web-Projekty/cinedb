@@ -1,4 +1,4 @@
-FROM php:8.3.23-apache-bullseye
+FROM php:8.3-apache
 
 # install dependencies
 WORKDIR /var/www/html
