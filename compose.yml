@@ -1,6 +1,5 @@
 services:
     cinedb:
-        container_name: cinedb
         labels:
             - com.centurylinklabs.watchtower.enable=true
         image: wlczak/cinedb:latest
